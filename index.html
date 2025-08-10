@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+
+<!-- HEADING SECTION -->
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Create personalized career goals Independence Day 15 August 2025" />
+  <title>AppLiQ — Independence Career Goals Image Generator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<!-- MAIN BODY -->
+
+<body>
+
+  <!-- MAIN CONTAINER STARTS -->
+
+  <main class="container">
+
+    <!-- APP HEADER -->
+
+    <header class="hero">
+      <h1>AppLiQ — Career Goals Image Generator</h1>
+      <p class="muted">Pick skills one by one and add them to Likes or Dislikes.</p>
+    </header>
+
+    <!-- MAIN SECTIONS -->
+
+    <section class="controls">
+
+      <!-- NAME INPUT -->
+
+      <label class="row">
+        <span>Name:</span>
+        <input id="nameInput" type="text" placeholder="Enter Full Name..." autocomplete="name"
+          aria-describedby="name-help" autocapitalize="name" maxlength="30" />
+      </label>
+
+      <!-- SKILL INPUT -->
+
+      <div class="row">
+        <label for="skillSelect">Skill:</label>
+        <select id="skillSelect" aria-label="Choose a skill to categorize">
+          <option value="">Choose a skill...</option>
+        </select>
+        <button type="button" id="likeBtn" aria-label="Add selected skill to likes">👍 Like</button>
+        <button type="button" id="dislikeBtn" aria-label="Add selected skill to dislikes">👎 Dislike</button>
+      </div>
+
+      <!-- LIKES DISLIKES HOLDER -->
+
+      <div>
+        <h3>{User's} Likes</h3>
+        <div id="likesContainer" class="pill-container"></div>
+      </div>
+      <div>
+        <h3>{User's} Dislikes</h3>
+        <div id="dislikesContainer" class="pill-container"></div>
+      </div>
+
+      <!-- USEFUL BUTTONS -->
+
+      <div class="button-wrapper">
+        <button type="button" id="generate" aria-describedby="generate-help">
+          <span class="btn-text">Generate Image</span>
+          <span class="loading" hidden>Generating...</span>
+        </button>
+        <button type="button" id="download" disabled aria-label="Download generated image as PNG">
+          Download PNG
+        </button>
+        <button type="button" id="whatsappShare" disabled>Share on WhatsApp</button>
+        <small id="generate-help" class="help-text">Create your personalized career goals image</small>
+      </div>
+
+    </section> <!-- MAIN SECTION ENDS -->
+
+    <!-- ANOTHER SECTION FOR PREVIEW -->
+
+    <section class="preview" aria-label="Image preview">
+      <h3>Preview</h3>
+      <div class="canvas-wrap">
+        <canvas id="outputCanvas" width="1200" height="675" role="img"
+          aria-label="Generated career goals image preview"></canvas>
+      </div>
+    </section>
+
+
+  </main> <!-- MAIN CONTAINER ENDS -->
+
+  <script src="app.js"></script>
+</body>
+
+</html>

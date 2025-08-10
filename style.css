@@ -1,0 +1,260 @@
+/* ----- MAIN CONTAINER BOX ----- */
+
+* {
+  box-sizing: border-box;
+}
+
+/* ----- ROOT THEMES ----- */
+
+:root {
+  --bg: #fafafa;
+  --accent: #ff6f00;
+  --green: #138a2a;
+  --saffron: #ff7f2a;
+  --safe-stroke: rgba(0, 0, 0, 0.12);
+}
+
+/* ----- MAIN BODY ----- */
+
+body {
+  margin: 0;
+  font-family: Inter, Segoe UI, system-ui, Roboto, "Helvetica Neue", Arial;
+  background: var(--bg);
+  color: #111;
+  /* -webkit-font-smoothing:antialiased;*/
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 20px;
+  min-height: 100vh;
+}
+
+/* ----- MAIN CONTAINER ----- */
+
+.container {
+  width: 100%;
+  max-width: 1100px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  animation: fadeIn 400ms ease;
+}
+
+/* ----- HERO SECTION ----- */
+
+.hero {
+  padding: 20px 28px;
+  border-bottom: 1px solid #eee;
+  /*background-color: #ff6f007c;  No need for now */
+   background-image: 
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url('./assets/image12.jpeg');
+ /*  background-image: url('./assets/image10.jpeg'); USE PARAMONIC IMAGES ONLY */
+  background-size: 100% auto;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: 20px;
+  color: white;
+}
+
+.hero p {
+  margin: 6px 0 0;
+  font-size: 13px;
+  color: #444;
+  color:#eee;
+}
+
+/* ----- CONTROL CLASS APPLIED TO WHOLE SECTION ----- */
+
+.controls {
+  padding: 18px 28px;
+  display: grid;
+  gap: 12px;
+}
+
+/* ----- ROW CLASS INSIDE CONTROL SECTION ----- */
+
+.row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.row span {
+  min-width: auto;
+}
+
+/* ----- INPUT FOR TEXT AND SELECT ----- */
+
+input[type="text"] {
+  flex: 1;
+  padding: 8px;
+  border: 0.5px solid #ddd;
+  border-radius: 6px;
+  outline: none;
+  transition: box-shadow 200ms;
+}
+
+input[type="text"]:focus {
+  box-shadow: 0 0 0 4px rgba(255, 127, 42, 0.12);
+  border-color: var(--accent);
+}
+
+select {
+  width: 50%;
+  padding: 8px;
+  border-radius: 6px;
+  border: 0.5px solid #ddd;
+  background: white;
+  outline: none;
+  transition: box-shadow 200ms;
+  margin-left: 13px;
+}
+
+select:focus {
+  box-shadow: 0 0 0 4px rgba(255, 127, 42, 0.12);
+  border-color: var(--accent);
+}
+
+/* ----- UNDEFEATED BUTTON STYLES ----- */
+
+.button-wrapper {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+button {
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 150ms, opacity 150ms;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+button:hover {
+  transform: translateY(-3px);
+}
+
+button:disabled {
+  opacity: 0.5;
+  transform: none;
+  cursor: default;
+}
+
+/* ----- PREVIEW SECTION ----- */
+
+.preview {
+  padding: 18px 28px;
+  border-top: 1px solid #eee;
+}
+
+.canvas-wrap {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  background: #f7f7f7;
+  border-radius: 8px;
+}
+
+canvas {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+}
+
+.foot {
+  padding: 12px 28px;
+  font-size: 13px;
+  text-align: right;
+  color: #666;
+}
+
+.small {
+  font-size: 12px;
+  color: #666;
+  margin-top: 6px;
+}
+
+/* ----- RED PILL GREEN PILL ----- */
+
+.pill-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.pill {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 14px;
+}
+
+.pill.like {
+  background: #c7ff5a;
+  color: #000;
+}
+
+.pill.dislike {
+  background: #e53935;
+  color: #fff;
+}
+
+/* ----- UNNECESSARY GARBAGE ----- */
+
+/*
+.two-cols {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap
+}
+
+
+.col {
+  flex: 1;
+  min-width: 220px
+}
+
+.col h3 {
+  margin: 0 0 8px 0;
+  font-size: 15px
+}
+*/
+
+
+
+@media (max-width:720px) {
+  .two-cols {
+    flex-direction: column;
+  }
+
+  .hero h1 {
+    font-size: 16px;
+  }
+
+  .container {
+    margin: 10px;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
