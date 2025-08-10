@@ -47,10 +47,10 @@ body {
   padding: 20px 28px;
   border-bottom: 1px solid #eee;
   /*background-color: #ff6f007c;  No need for now */
-   background-image: 
+  background-image:
     linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url('./assets/image12.jpeg');
- /*  background-image: url('./assets/image10.jpeg'); USE PARAMONIC IMAGES ONLY */
+  /*  background-image: url('./assets/image10.jpeg'); USE PARAMONIC IMAGES ONLY */
   background-size: 100% auto;
   background-position: center;
   background-repeat: no-repeat;
@@ -66,28 +66,40 @@ body {
   margin: 6px 0 0;
   font-size: 13px;
   color: #444;
-  color:#eee;
+  color: #eee;
 }
 
 /* ----- CONTROL CLASS APPLIED TO WHOLE SECTION ----- */
 
 .controls {
-  padding: 18px 28px;
+  padding: 18px 10px;
   display: grid;
   gap: 12px;
+  border: solid greenyellow;
 }
 
-/* ----- ROW CLASS INSIDE CONTROL SECTION ----- */
+/* -----Name ROW CLASS INSIDE CONTROL SECTION ----- */
 
 .row {
   display: flex;
   gap: 12px;
   align-items: center;
+  border: solid yellow;
+  padding: 5px;
 }
 
-.row span {
-  min-width: auto;
+/* -----Skill ROW CLASS INSIDE CONTROL SECTION ----- */
+
+.skill-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  border: solid yellow;
+  padding: 5px;
 }
+
+
+
 
 /* ----- INPUT FOR TEXT AND SELECT ----- */
 
@@ -95,7 +107,7 @@ input[type="text"] {
   flex: 1;
   padding: 8px;
   border: 0.5px solid #ddd;
-  border-radius: 6px;
+  border-radius: 5px;
   outline: none;
   transition: box-shadow 200ms;
 }
@@ -106,9 +118,10 @@ input[type="text"]:focus {
 }
 
 select {
+  /* flex:1; */
   width: 50%;
   padding: 8px;
-  border-radius: 6px;
+  border-radius: 5px;
   border: 0.5px solid #ddd;
   background: white;
   outline: none;
@@ -139,6 +152,30 @@ button {
   transition: transform 150ms, opacity 150ms;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
 }
+
+.like-btn {
+  background: #6fe71e;
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 150ms, opacity 150ms;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+.dis-btn {
+  background: #e53935;
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 150ms, opacity 150ms;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+
 
 button:hover {
   transform: translateY(-3px);
@@ -233,7 +270,12 @@ canvas {
 
 
 
-@media (max-width:720px) {
+@media (max-width: 440px) {
+
+  body {
+    padding: 0;
+  }
+
   .two-cols {
     flex-direction: column;
   }
@@ -242,9 +284,25 @@ canvas {
     font-size: 16px;
   }
 
-  .container {
-    margin: 10px;
+  .hero p {
+    font-size: 11px;
   }
+
+  .container {
+    margin: 5px;
+  }
+
+  .like-btn {
+    padding: 5px;
+    font-size: 12px;
+  }
+
+  .dis-btn {
+    padding: 5px;
+    font-size: 12px;
+  }
+
+
 }
 
 @keyframes fadeIn {
