@@ -1,2 +1,2 @@
 branch: master
-app name: I For India
+app name: I for India
