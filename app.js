@@ -1,13 +1,21 @@
-/* AppLiQ — one-by-one selection version */
+/* ----- Section 1 --- I for India and B for Bharat ----- */
 
 const OPTIONS = [
   "React", "React Native", "Angular", "Vue", "Java", "C++", "Python",
-  "Data Analysis", "Machine Learning", "Cloud", "DevOps", "Networking",
-  "DSA", "Software Engineer", "Cybersecurity", "UI/UX", "R", "SQL"
+  "Data Analysis", "Machine Learning", "Cloud", "DevOps", "Networking", "Flask", "Django",
+  "DSA", "Software Engineer", "Cybersecurity", "UI/UX", "Springboot", "Data Engineering", "R", "SQL"
 ];
+
+
+
+/* ----- Section 2 --- Empty arrays for Data storage ----- */
 
 const likesList = [];
 const dislikesList = [];
+
+
+
+/* ----- Section 3 --- Some shit I don't understand now but will later ----- */
 
 const nameInput = document.getElementById('nameInput');
 const skillSelect = document.getElementById('skillSelect');
@@ -20,6 +28,10 @@ const downloadBtn = document.getElementById('download');
 const canvas = document.getElementById('outputCanvas');
 const ctx = canvas.getContext('2d');
 
+
+
+/* ----- Section 4 --- function to populate skills selections I guess ----- */
+
 function populateSkillOptions(){
   OPTIONS.forEach(opt => {
     const o = document.createElement('option');
@@ -29,10 +41,17 @@ function populateSkillOptions(){
   });
 }
 
+
+/* ----- Section 5 --- function to populate skills selections I guess ----- */
+
+
 function renderLists(){
   likesContainer.innerHTML = likesList.map(skill => `<span class="pill like">${skill}</span>`).join(' ');
   dislikesContainer.innerHTML = dislikesList.map(skill => `<span class="pill dislike">${skill}</span>`).join(' ');
 }
+
+/* ----- Section 6 --- Append like button ----- */
+
 
 likeBtn.addEventListener('click', () => {
   const val = skillSelect.value;
@@ -42,6 +61,9 @@ likeBtn.addEventListener('click', () => {
   }
 });
 
+/* ----- Section 7 --- Append dislike button ----- */
+
+
 dislikeBtn.addEventListener('click', () => {
   const val = skillSelect.value;
   if(val && !likesList.includes(val) && !dislikesList.includes(val)){
@@ -49,6 +71,9 @@ dislikeBtn.addEventListener('click', () => {
     renderLists();
   }
 });
+
+/* ----- Section 8 --- function to draw tricolor flag ----- */
+
 
 function drawTricolorBackground(){
   const w = canvas.width, h = canvas.height;
@@ -61,6 +86,9 @@ function drawTricolorBackground(){
   ctx.moveTo(0,h); ctx.lineTo(w,h); ctx.lineTo(w*0.95,h*0.88); ctx.lineTo(0,h*0.92); ctx.closePath(); ctx.fill();
 }
 
+/* ----- Section 9 --- Draw safezone ----- */
+
+
 function drawSafeZone(){
   const w = canvas.width, h = canvas.height;
   const zone = {x:w*0.07, y:h*0.16, width:w*0.86, height:h*0.68};
@@ -72,11 +100,14 @@ function drawSafeZone(){
   return zone;
 }
 
+/* ----- Section 10 --- To draw text area ----- */
+
+
 function drawTextColumns(zone, name, dislikes, likes){
   const padding = 28;
   const leftX = zone.x + padding;
   const rightX = zone.x + zone.width/2 + padding/2;
-  const startY = zone.y + 40;
+  const startY = zone.y + 100;
   const lineHeight = 34;
 
   ctx.fillStyle = '#111'; ctx.font = 'bold 28px Inter, system-ui, Arial';
@@ -84,8 +115,8 @@ function drawTextColumns(zone, name, dislikes, likes){
   ctx.fillText(name || 'Your Name', zone.x + zone.width/2, zone.y + 34);
 
   ctx.font = '600 18px Inter, Arial'; ctx.textAlign = 'left';
-  ctx.fillText('Dislikes', leftX, startY - 6);
-  ctx.fillText('Likes', rightX, startY - 6);
+  ctx.fillText('Dislikes', leftX, startY - 30);
+  ctx.fillText('Likes', rightX, startY - 30);
 
   ctx.font = '15px Inter, Arial';
   const maxItems = 8;
@@ -110,6 +141,10 @@ function drawTextColumns(zone, name, dislikes, likes){
   }
 }
 
+
+/* ----- Section 11 --- What this code even do ?? ----- */
+
+
 function roundRect(ctx, x, y, w, h, r, fill, stroke){
   ctx.beginPath();
   ctx.moveTo(x + r, y);
@@ -122,20 +157,29 @@ function roundRect(ctx, x, y, w, h, r, fill, stroke){
   if(stroke) ctx.stroke();
 }
 
-function drawDecorations(zone){
-  const x = zone.x + 18, y = zone.y + 18, w = 80, h = 12;
-  ctx.fillStyle = '#ff7f2a'; ctx.fillRect(x,y,w,h/3);
-  ctx.fillStyle = '#ffffff'; ctx.fillRect(x,y+h/3,w,h/3);
-  ctx.fillStyle = '#138a2a'; ctx.fillRect(x,y+(2*h/3),w,h/3);
-}
+/* ----- Section 12 --- Decorations ??  ----- */
+
+
+//function drawDecorations(zone){
+//  const x = zone.x + 18, y = zone.y + 18, w = 80, h = 12;
+//  ctx.fillStyle = '#ff7f2a'; ctx.fillRect(x,y,w,h/3);
+//  ctx.fillStyle = '#ffffff'; ctx.fillRect(x,y+h/3,w,h/3);
+//  ctx.fillStyle = '#138a2a'; ctx.fillRect(x,y+(2*h/3),w,h/3);
+//}
+
+/* ----- Section 13 --- function to generate image  ----- */
+
 
 function generateImage(){
   drawTricolorBackground();
   const zone = drawSafeZone();
   drawTextColumns(zone, nameInput.value, dislikesList, likesList);
-  drawDecorations(zone);
+  //drawDecorations(zone);
   downloadBtn.disabled = false;
 }
+
+/* ----- Section 14 --- function to download image  ----- */
+
 
 function downloadImage(){
   const url = canvas.toDataURL('image/png');
