@@ -35,7 +35,7 @@ body {
   width: 100%;
   max-width: 1100px;
   background: white;
-  border-radius: 10px;
+  border-radius: 8px;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
   overflow: hidden;
   animation: fadeIn 400ms ease;
@@ -65,8 +65,8 @@ body {
 .hero p {
   margin: 6px 0 0;
   font-size: 13px;
-  color: #444;
-  color: #eee;
+  color: #e2c8c8e3;
+
 }
 
 /* ----- CONTROL CLASS APPLIED TO WHOLE SECTION ----- */
@@ -80,81 +80,82 @@ body {
 
 /* -----Name ROW CLASS INSIDE CONTROL SECTION ----- */
 
-.row {
+.name-row {
   display: flex;
-  gap: 12px;
   align-items: center;
-  border: solid yellow;
+  gap: 8px;
+  width: 100%;
   padding: 5px;
+  flex-wrap: wrap;
+  max-width: 400px;
 }
 
-/* -----Skill ROW CLASS INSIDE CONTROL SECTION ----- */
+.name-row input[type="text"] {
+  flex: 1;
+  min-width: 0;
+  padding: 8px;
+  border: 0.5px solid #ddd;
+  border-radius: 5px;
+  outline: none;
+  transition: box-shadow 200ms, border-color 200ms;
+}
 
-.skill-row {
+.name-row input[type="text"]:focus {
+  box-shadow: 0 0 0 4px rgba(255, 127, 42, 0.12);
+  border-color: var(--accent);
+}
+
+
+/* -----Skill ROW 2 TEST CLASS INSIDE CONTROL SECTION ----- */
+
+
+.skill-row-2 {
   display: flex;
-  gap: 12px;
   align-items: center;
-  border: solid yellow;
+  gap: 8px;
+  width: 100%;
+  flex-wrap: wrap;
   padding: 5px;
+
 }
 
+.skill-row-2 select {
+  flex: 1;
+  min-width: 0;
 
-.like-btn {
-  background: #6fe71e;
-  color: white;
-  border: none;
-  padding: 10px 14px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: transform 150ms, opacity 150ms;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
-}
-
-.dis-btn {
-  background: #e53935;
-  color: white;
-  border: none;
-  padding: 10px 14px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: transform 150ms, opacity 150ms;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
-}
-
-select {
-  /* flex:1; */
-  width: 50%;
   padding: 8px;
   border-radius: 5px;
   border: 0.5px solid #ddd;
   background: white;
   outline: none;
-  transition: box-shadow 200ms;
-  margin-left: 13px;
+  transition: box-shadow 200ms, border-color 200ms;
 }
 
-select:focus {
+.skill-row-2 select:focus {
   box-shadow: 0 0 0 4px rgba(255, 127, 42, 0.12);
   border-color: var(--accent);
 }
 
 
-
-/* ----- INPUT FOR TEXT AND SELECT ----- */
-
-input[type="text"] {
-  flex: 1;
-  padding: 8px;
-  border: 0.5px solid #ddd;
-  border-radius: 5px;
-  outline: none;
-  transition: box-shadow 200ms;
+.skill-row-2 .like-btn,
+.skill-row-2 .dis-btn {
+  flex: 0 0 auto;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 150ms, opacity 150ms;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
 }
 
-input[type="text"]:focus {
-  box-shadow: 0 0 0 4px rgba(255, 127, 42, 0.12);
-  border-color: var(--accent);
+.skill-row-2 .like-btn {
+  background: #6fe71e;
 }
+
+.skill-row-2 .dis-btn {
+  background: #e53935;
+}
+
 
 
 /* ----- UNDEFEATED BUTTON STYLES ----- */
@@ -249,18 +250,48 @@ canvas {
 }
 
 
-/* */
+@media(max-width: 440px) {
+  .skill-row-2 {
+    gap: 5px;
+  }
+
+  .skill-row-2 select {
+    padding: 6px;
+    font-size: 13px;
+  }
+
+  .skill-row-2 button {
+    padding: 6px 10px;
+    font-size: 13px;
+  }
+
+  .name-row-2 {
+    gap: 5px;
+  }
+
+  .name-row select {
+    padding: 5px;
+    font-size: 12px;
+  }
+
+
+}
+
+
+
+
+
+
+
+/*
+
 @media (max-width: 440px) {
+
 
   body {
     padding: 0;
   }
 
-  /* 
-  .two-cols {
-    flex-direction: column;
-  }
-*/
 
   .hero h1 {
     font-size: 16px;
@@ -274,18 +305,15 @@ canvas {
     margin: 5px;
   }
 
-  .like-btn {
+  .dis-btn, .like-btn {
     padding: 5px;
     font-size: 12px;
   }
-
-  .dis-btn {
-    padding: 5px;
-    font-size: 12px;
-  }
-
 
 }
+*/
+
+
 
 
 
