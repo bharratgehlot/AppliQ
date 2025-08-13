@@ -1,0 +1,19 @@
+# I for India
+
+## Independence Day Career Goals Generator App
+
+### Description
+Prepare your likes and dislikes table in computer science to focus on specific goals or languages. This will give you clarity on what you should do, not what you shouldn't.
+
+### Details
+Our app helps you create a personalized career roadmap in the field of computer science. By identifying your strengths and weaknesses, you'll be able to make informed decisions about your career path.
+
+### Screenshot
+![Screenshot](assets/screenshots/sc1.png)
+![Screenshot](assets/screenshots/sc2-big.png)
+![Screenshot](assets/screenshots/sc-final.png)
+
+---
+
+**Wishing You a Happy Independence Day 2025!**  
+**Jai Hind!**
