@@ -26,9 +26,9 @@
       <p class="muted">Pick skills one by one and add them to likes or dislikes.</p>
     </header>
 
-    <!-- MAIN SECTIONS -->
+    <!--  SECTIONS 1 -->
 
-    <section class="controls">
+    <section class="section-1">
 
       <!-- Input Wrapper -->
 
@@ -80,6 +80,9 @@
       <!-- USEFUL BUTTONS -->
 
       <div class="action-buttons">
+
+        <div class="action-buttons-row"> 
+
         <button type="button" id="generate">
           <span class="btn-text">Generate Image</span>
           <span class="loading" hidden>Generating...</span>
@@ -88,14 +91,17 @@
           Download PNG
         </button>
         <button type="button" id="whatsappShare" disabled>Share on WhatsApp</button>
+        </div>
+
         <small class="help-text">Create your personalized career goals image</small>
+
       </div>
 
     </section> <!-- MAIN SECTION ENDS -->
 
-    <!-- ANOTHER SECTION FOR PREVIEW -->
+    <!--  SECTION 2-->
 
-    <section class="preview" aria-label="Image preview">
+    <section class="section-2" aria-label="Image preview">
       <h3>Preview</h3>
       <div class="canvas-wrap">
         <canvas id="outputCanvas" width="1200" height="675" role="img"

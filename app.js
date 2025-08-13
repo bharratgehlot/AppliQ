@@ -81,7 +81,7 @@ const OPTIONS = [
   //"Zapier", // 44
   "Figma", // 45
   "Git", // 46
- // "GitHub", // 47
+  // "GitHub", // 47
   //"GitLab", // 48
   //"Slack", // 49
   //"Salesforce", // 50
@@ -162,19 +162,50 @@ function renderLists() {
 
 /* ----- Section 6 --- Append like button ----- */
 
+function showToast(message, type = 'warning') {
+  const toast = document.createElement('div');
+  toast.textContent = message;
+
+  const isMobile = window.innerWidth <= 440;
+
+  toast.style.cssText = `
+    position: fixed; 
+     top: ${isMobile ? '10px' : '20px'}; 
+    right: ${isMobile ? '10px' : '20px'}; 
+    z-index: 1000;
+     padding: ${isMobile ? '8px 12px' : '12px 20px'};
+    border-radius: 8px; 
+    font-size: ${isMobile ? '13px' : '14px'};
+    color: white;
+    background: ${type === 'error' ? '#e53935' : '#ff6f00'};
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    animation: slideIn 0.3s ease;
+  `;
+  document.body.appendChild(toast);
+
+  setTimeout(() => toast.remove(),
+    3000);
+
+
+}
+
+// Replace your alert with:
+
+
 
 likeBtn.addEventListener('click', () => {
   const val = skillSelect.value;
   if (val && !likesList.includes(val) && !dislikesList.includes(val)) {
 
     if (likesList.length < 8) {
-    likesList.push(val);
-    renderLists();
-  } else {
-      alert('Maximum 8 likes can be added');
+      likesList.push(val);
+      renderLists();
+    } else {
+      showToast('Maximum 8 likes can be added');
+    }
   }
-}
 });
+
 
 /* ----- Section 7 --- Append dislike button ----- */
 
@@ -182,11 +213,14 @@ likeBtn.addEventListener('click', () => {
 dislikeBtn.addEventListener('click', () => {
   const val = skillSelect.value;
   if (val && !likesList.includes(val) && !dislikesList.includes(val)) {
-    if (dislikesList.length < 8) { 
-    dislikesList.push(val);
-    renderLists();
+
+    if (dislikesList.length < 8) {
+      dislikesList.push(val);
+      renderLists();
+    } else {
+      showToast('Maximum 8 dislikes can be added');
+    }
   }
-}
 }
 );
 
@@ -250,7 +284,8 @@ function drawSafeZone() {
   ctx.save();
 
   ctx.strokeStyle = 'rgba(0,0,0,0.08)';
-  ctx.setLineDash([8, 6]); ctx.lineWidth = 2;
+  ctx.setLineDash([8, 6]);
+  ctx.lineWidth = 2;
   ctx.strokeRect(zone.x + 12, zone.y + 12, zone.width - 24, zone.height - 24);
   ctx.restore();
   return zone;
@@ -353,3 +388,9 @@ window.addEventListener('load', () => {
   generateBtn.addEventListener('click', generateImage);
   downloadBtn.addEventListener('click', downloadImage);
 });
+
+
+
+// Some other functions testing 
+
+

@@ -45,49 +45,56 @@ body {
 }
 
 
-/* ----- HERO SECTION ----- */
+/* ----- HEADER HERO SECTION ----- */
 
 .hero {
-  padding: 20px 28px;
+  padding: 40px 28px;
   border-bottom: 1px solid #eee;
-  /*background-color: #ff6f007c;  No need for now */
   background-image:
     linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url('./assets/image12.jpeg');
+
   /*  background-image: url('./assets/image10.jpeg'); USE PARAMONIC IMAGES ONLY */
   background-size: 100% auto;
   background-position: center;
   background-repeat: no-repeat;
+    border: 3px solid greenyellow;
+
+
+
 }
 
 .hero h1 {
   margin: 0;
-  font-size: 20px;
+  font-size: 22px;
   color: white;
 }
 
 .hero p {
   margin: 6px 0 0;
-  font-size: 13px;
+  font-size: 15px;
   color: #e2c8c8e3;
 }
 
 /* ----- CONTROL CLASS APPLIED TO WHOLE SECTION ----- */
 
-.controls {
-  padding: 18px 10px;
+.section-1 {
+  padding: 18px 12px;
   display: grid;
   gap: 12px;
+  border: 3px solid blueviolet;
+
 }
 
 /* -----NAME ROW CLASS INSIDE CONTROL SECTION ----- */
 
 .input-row {
   display: flex;
-  gap: 12px;
   flex-wrap: wrap;
   padding: 5px;
-
+  align-items: center;
+  width: 100%;
+  gap: 8px;
 }
 
 .name,
@@ -95,16 +102,21 @@ body {
   display: flex;
   align-items: center;
   gap: 8px;
+  padding: 5px;
   flex-wrap: wrap;
-  width: 30%;
-  /*  max-width: 400px; */
+  /*width: 30%; */
+  min-width: 200px;
+  flex: 1;
+ 
 }
+
+
 
 .name input[type="text"],
 .goal input[type="text"] {
   flex: 1;
   min-width: 0;
-  padding: 8px;
+  padding: 5px;
   border: 0.5px solid #ddd;
   border-radius: 5px;
   outline: none;
@@ -119,19 +131,20 @@ body {
 
 /* -----Skill ROW 2 TEST CLASS INSIDE CONTROL SECTION ----- */
 
+
 .skill-row {
   display: flex;
   align-items: center;
   gap: 8px;
-  width: 97%;
   flex-wrap: wrap;
   padding: 5px;
+  width: 100%;
 }
 
 .skill-row select {
   flex: 1;
   min-width: 0;
-  padding: 8px;
+  padding: 5px;
   border-radius: 5px;
   border: 0.5px solid #ddd;
   background: white;
@@ -164,6 +177,8 @@ body {
   background: #e53935;
 }
 
+
+
 /* -----  BUTTON STYLES Also used by like and dislike buttons ----- */
 
 
@@ -188,26 +203,71 @@ button:disabled {
   cursor: default;
 }
 
+/* -----  Pills Sections ----- */
+
+/* ----- RED PILL GREEN PILL ----- */
+
+.pill-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 10px;
+
+
+}
+
+.pill {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 14px;
+}
+
+.pill.like {
+  background: #c7ff5a;
+  color: #000;
+}
+
+.pill.dislike {
+  background: #e53935;
+  color: #fff;
+}
+
+
 /* -----  BUTTON STYLES for actions buttons only ----- */
 
 .action-buttons {
   display: flex;
+  flex-direction: column;
   gap: 8px;
+  align-items: center;
   flex-wrap: wrap;
-  border: 3px solid #ff9933;
   padding: 15px;
+  border-radius: 5px;
   justify-content: center;
-  background: rgba(255, 153, 51, 0.05);
-  /* subtle tricolor bg */
-   animation: saffronShift 4s infinite ease-in-out;
-  box-shadow: 0 0 6px rgba(255, 153, 51, 0.4);
-}
-@keyframes saffronShift {
-  0%   { border-color: #ff9933; }
-  50%  { border-color: #ffffff; } /* strong contrast */
-  100% { border-color: #ff9933; }
+  background: rgba(255, 153, 51, 0.1);
+  border: 6px solid transparent;
+  animation: tricolorGlow 4s linear infinite;
+
+
+
 }
 
+@keyframes tricolorGlow {
+  0%   { box-shadow: 0 0 10px #ff9933; }
+  33%  { box-shadow: 0 0 10px #ffffff; }
+  66%  { box-shadow: 0 0 10px #138808; }
+  100% { box-shadow: 0 0 10px #ff9933; }
+}
+
+
+
+
+.action-buttons-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
 
 
 .action-buttons button {
@@ -221,11 +281,14 @@ button:disabled {
   transition: transform 300ms ease, box-shadow 300ms ease, background-color 300ms ease;
   box-shadow: 0 4px 14px rgba(255, 153, 51, 0.25);
 }
+
 .action-buttons button:hover {
   transform: translateY(-4px) scale(1.07);
-  background-color: #ffb14d; /* slightly brighter saffron */
+  background-color: #ffb14d;
+  /* slightly brighter saffron */
   box-shadow: 0 6px 20px rgba(255, 153, 51, 0.4),
-              0 0 12px rgba(255, 153, 51, 0.6); /* glow */
+    0 0 12px rgba(255, 153, 51, 0.6);
+  /* glow */
 }
 
 .action-buttons button:disabled {
@@ -255,17 +318,20 @@ button:disabled {
 
 /* ----- PREVIEW SECTION ----- */
 
-.preview {
-  padding: 18px 28px;
-  border-top: 1px solid #eee;
+.section-2 {
+  padding: 18px 12px;
+  border-top: 1px dashed #eee;
+  border: 3px solid red;
 }
 
 .canvas-wrap {
   display: flex;
   justify-content: center;
-  padding: 10px;
+  padding: 7px;
   background: #f7f7f7;
   border-radius: 8px;
+
+
 }
 
 canvas {
@@ -273,7 +339,12 @@ canvas {
   height: auto;
   border-radius: 6px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+
+
 }
+
+
+/* 
 
 .foot {
   padding: 12px 28px;
@@ -287,37 +358,23 @@ canvas {
   color: #666;
   margin-top: 6px;
 }
+*/
 
-/* ----- RED PILL GREEN PILL ----- */
 
-.pill-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-bottom: 10px;
-}
 
-.pill {
-  padding: 4px 10px;
-  border-radius: 12px;
-  font-size: 14px;
-}
 
-.pill.like {
-  background: #c7ff5a;
-  color: #000;
-}
 
-.pill.dislike {
-  background: #e53935;
-  color: #fff;
-}
+
 
 
 @media(max-width: 440px) {
 
   body {
     padding: 5px;
+  }
+
+  .hero {
+    padding: 15px 18px;
   }
 
   .hero h1 {
@@ -339,7 +396,7 @@ canvas {
 
   .input-row {
     flex-direction: column;
-    gap: 20px;
+    gap: 5px;
 
   }
 
@@ -348,13 +405,27 @@ canvas {
   .name input,
   .goal input {
     padding: 5px;
-    font-size: 12px;
+    font-size: 13px;
   }
 
   .input-row label,
   .skill-row label {
     font-size: 14px;
   }
+
+  .pill-container {
+
+  gap: 6px;
+
+
+}
+
+.pill {
+  padding: 3px 11px;
+  font-size: 13px;
+}
+
+
 
   /* MEDIA QUESRIES FOR ACTION BUTTONS */
 
