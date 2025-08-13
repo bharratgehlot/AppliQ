@@ -47,55 +47,55 @@ const OPTIONS = [
   "JavaScript", // 10
   "Node.js", // 11
   "ASP.NET", // 12
-  "API Development", // 13
-  "Docker", // 14
-  "Kubernetes", // 15
+  //"API Development", // 13
+  //"Docker", // 14
+  //"Kubernetes", // 15
   "Swift", // 16
   "Rust", // 17
   "Cloud Computing", // 18
   "DevOps", // 19
   "Networking", // 20
-  "Redux", // 21
-  "Ansible", // 22
+  //"Redux", // 21
+  //"Ansible", // 22
   "Flask", // 23
   "Solution Architect", // 24
   "Django", // 25
   "HR", // 26
-  "Project Management", // 27
+  //"Project Management", // 27
   "Artificial Intelligence", // 28
-  "Prompt Engineering", // 29
+  //"Prompt Engineering", // 29
   "TypeScript", // 30
-  "Next.js", // 31
+  //"Next.js", // 31
   "Terraform", // 32
   "NumPy", // 33
   "Pandas", // 34
   "Penetration Testing", // 35
-  "WebAssembly (Wasm)", // 36
+  //"WebAssembly (Wasm)", // 36
   "FastAPI", // 37
   "Express.js", // 38
   "Hadoop", // 39
   "Apache Spark", // 40
   "PostgreSQL", // 41
-  "ServiceNow", // 42
-  "Asana", // 43
-  "Zapier", // 44
+  //"ServiceNow", // 42
+  //"Asana", // 43
+  //"Zapier", // 44
   "Figma", // 45
   "Git", // 46
-  "GitHub", // 47
-  "GitLab", // 48
-  "Slack", // 49
-  "Salesforce", // 50
-  "Jira", // 51
+ // "GitHub", // 47
+  //"GitLab", // 48
+  //"Slack", // 49
+  //"Salesforce", // 50
+  //"Jira", // 51
   "Flutter", // 52
-  "CI/CD", // 53
+  //"CI/CD", // 53
   "Scrum Master", // 54
   "MongoDB", // 55
-  "Tableau", // 56
-  "Unity", // 57
+  //"Tableau", // 56
+  //"Unity", // 57
   "Site Reliability Engineering", // 58
   "Data Visualization (Tableau, Power BI)", // 59
-  "GraphQL", // 60
-  "Natural Language Processing", // 61
+  //"GraphQL", // 60
+  //"Natural Language Processing", // 61
   "ETL Engineer", // 62
   "DSA", // 63
   "Gen AI", // 64
@@ -103,7 +103,7 @@ const OPTIONS = [
   "Blockchain", // 66
   "Ruby on Rails", // 67
   "Agentic AI", // 68
-  "Software Testing", // 69
+  "Testing", // 69
   "Software Engineer", // 70
   "Ruby", // 71
   "Cybersecurity", // 72
@@ -113,7 +113,7 @@ const OPTIONS = [
   "R", // 76
   "Big Data", // 77
   "SQL", // 78
-  "Internet of Things (IoT)" // 79
+  //"Internet of Things (IoT)" // 79
 ];
 
 /* 79 Because its 79th Independance Day */
