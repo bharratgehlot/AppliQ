@@ -23,37 +23,41 @@
 
     <header class="hero">
       <h1>I for India — Career Goals Image Generator</h1>
-      <p class="muted">Pick skills one by one and add them to Likes or Dislikes.</p>
+      <p class="muted">Pick skills one by one and add them to likes or dislikes.</p>
     </header>
 
     <!-- MAIN SECTIONS -->
 
     <section class="controls">
 
-      <!-- NAME INPUT -->
+      <!-- Input Wrapper -->
 
-      <label class="name-row">
+      <div class="input-row"> 
+      <!-- NAME INPUT -->
+ 
+      <label class="name">
         <span>Name:</span>
-        <input id="nameInput" type="text" placeholder="Enter Full Name..." autocomplete="name"
-          aria-describedby="name-help" autocapitalize="name" maxlength="30" />
+        <input id="nameInput" type="text" placeholder="Enter Full Name..." 
+          autocapitalize="words" maxlength="30" />
       </label>
 
-      <!-- SKILL INPUT 1 DISABLED
+      <!-- Career Goal Input  -->
 
-      <div class="skill-row">
-        <label for="">Skill:</label>
-        <select id="" aria-label="Choose a skill to categorize">
-          <option value="">Choose a skill...</option>
-        </select>
-        <button class="like-btn" id="" aria-label="Add selected skill to likes">👍 Like</button>
-        <button class="dis-btn" id="" aria-label="Add selected skill to dislikes">👎 Dislike</button>
+      <label class="goal">
+        <span>Dream Job: </span>
+        <input id="goalInput" type="text" placeholder="e.g., Software Engineer, Data Scientist"
+           maxlength="40" />
+      </label>
+
+
       </div>
--->
 
-      <!-- SKILL INPUT 2 for TEST only-->
+
+
+      <!-- SKILL INPUT -->
 
       
-      <div class="skill-row-2">
+      <div class="skill-row">
         <label for="skillSelect">Skills :</label>
         <select id="skillSelect" aria-label="Choose a skill to categorize">
           <option value="">Choose a skill...</option>
@@ -75,8 +79,8 @@
 
       <!-- USEFUL BUTTONS -->
 
-      <div class="button-wrapper">
-        <button type="button" id="generate" aria-describedby="generate-help">
+      <div class="action-buttons">
+        <button type="button" id="generate">
           <span class="btn-text">Generate Image</span>
           <span class="loading" hidden>Generating...</span>
         </button>
@@ -84,7 +88,7 @@
           Download PNG
         </button>
         <button type="button" id="whatsappShare" disabled>Share on WhatsApp</button>
-        <small id="generate-help" class="help-text">Create your personalized career goals image</small>
+        <small class="help-text">Create your personalized career goals image</small>
       </div>
 
     </section> <!-- MAIN SECTION ENDS -->

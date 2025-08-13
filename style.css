@@ -19,9 +19,9 @@
 body {
   margin: 0;
   font-family: Inter, Segoe UI, system-ui, Roboto, "Helvetica Neue", Arial;
-  background: var(--bg);
+  background: rgba(128, 128, 128, 0.849); /*alt - white, gray*/
   color: #111;
-  /* -webkit-font-smoothing:antialiased;*/
+  -webkit-font-smoothing:antialiased;
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -33,7 +33,7 @@ body {
 
 .container {
   width: 100%;
-  max-width: 1100px;
+  max-width: 1000px;
   background: white;
   border-radius: 8px;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
@@ -66,7 +66,6 @@ body {
   margin: 6px 0 0;
   font-size: 13px;
   color: #e2c8c8e3;
-
 }
 
 /* ----- CONTROL CLASS APPLIED TO WHOLE SECTION ----- */
@@ -75,22 +74,30 @@ body {
   padding: 18px 10px;
   display: grid;
   gap: 12px;
-  border: solid greenyellow;
 }
 
 /* -----NAME ROW CLASS INSIDE CONTROL SECTION ----- */
 
-.name-row {
+.input-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 5px;
+
+}
+
+.name,
+.goal{
   display: flex;
   align-items: center;
   gap: 8px;
-  width: 100%;
-  padding: 5px;
   flex-wrap: wrap;
-  max-width: 400px;
+  width: 48%;
+  /*  max-width: 400px; */
 }
 
-.name-row input[type="text"] {
+.name input[type="text"],
+.goal input[type="text"] {
   flex: 1;
   min-width: 0;
   padding: 8px;
@@ -100,29 +107,26 @@ body {
   transition: box-shadow 200ms, border-color 200ms;
 }
 
-.name-row input[type="text"]:focus {
+.name input[type="text"]:focus,
+.goal input[type="text"]:focus {
   box-shadow: 0 0 0 4px rgba(255, 127, 42, 0.12);
   border-color: var(--accent);
 }
 
-
 /* -----Skill ROW 2 TEST CLASS INSIDE CONTROL SECTION ----- */
 
-
-.skill-row-2 {
+.skill-row {
   display: flex;
   align-items: center;
   gap: 8px;
-  width: 100%;
+  width: 97%;
   flex-wrap: wrap;
   padding: 5px;
-
 }
 
-.skill-row-2 select {
+.skill-row select {
   flex: 1;
   min-width: 0;
-
   padding: 8px;
   border-radius: 5px;
   border: 0.5px solid #ddd;
@@ -131,14 +135,13 @@ body {
   transition: box-shadow 200ms, border-color 200ms;
 }
 
-.skill-row-2 select:focus {
+.skill-row select:focus {
   box-shadow: 0 0 0 4px rgba(255, 127, 42, 0.12);
   border-color: var(--accent);
 }
 
-
-.skill-row-2 .like-btn,
-.skill-row-2 .dis-btn {
+.skill-row .like-btn,
+.skill-row .dis-btn {
   flex: 0 0 auto;
   color: white;
   border: none;
@@ -146,25 +149,19 @@ body {
   cursor: pointer;
   transition: transform 150ms, opacity 150ms;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  
 }
 
-.skill-row-2 .like-btn {
+.skill-row .like-btn {
   background: #6fe71e;
 }
 
-.skill-row-2 .dis-btn {
+.skill-row .dis-btn {
   background: #e53935;
 }
 
+/* -----  BUTTON STYLES Also used by like and dislike buttons ----- */
 
-
-/* ----- UNDEFEATED BUTTON STYLES ----- */
-
-.button-wrapper {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-}
 
 button {
   background: var(--accent);
@@ -177,7 +174,6 @@ button {
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
 }
 
-
 button:hover {
   transform: translateY(-3px);
 }
@@ -188,12 +184,51 @@ button:disabled {
   cursor: default;
 }
 
+/* -----  BUTTON STYLES for actions buttons only ----- */
+
+.action-buttons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  border: 2px solid #c7ff5a;
+  padding: 5px;
+  justify-content: center;
+}
+
+.action-buttons button {
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 150ms, opacity 150ms;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+.action-buttons button:hover {
+  transform: translateY(-3px);
+}
+
+.action-buttons button:disabled {
+  opacity: 0.5;
+  transform: none;
+  cursor: default;
+}
+
+
+.help-text {
+  justify-content: center;
+  text-align: center;
+  font-size: 13px;
+  color: #666;
+}
+
 /* ----- PREVIEW SECTION ----- */
 
 .preview {
   padding: 18px 28px;
   border-top: 1px solid #eee;
-  border: solid aqua;
 }
 
 .canvas-wrap {
@@ -251,73 +286,63 @@ canvas {
 
 
 @media(max-width: 440px) {
-  .skill-row-2 {
-    gap: 5px;
-  }
 
-  .skill-row-2 select {
-    padding: 6px;
-    font-size: 13px;
-  }
-
-  .skill-row-2 button {
-    padding: 6px 10px;
-    font-size: 13px;
-  }
-
-  .name-row-2 {
-    gap: 5px;
-  }
-
-  .name-row select {
+    body {
     padding: 5px;
-    font-size: 12px;
   }
-
-
-}
-
-
-
-
-
-
-
-/*
-
-@media (max-width: 440px) {
-
-
-  body {
-    padding: 0;
-  }
-
 
   .hero h1 {
-    font-size: 16px;
+    font-size: 18px;
   }
 
   .hero p {
     font-size: 11px;
   }
 
-  .container {
-    margin: 5px;
+  .skill-row {
+    gap: 5px;
   }
 
-  .dis-btn, .like-btn {
+    .name, .goal{
+    width: 100%;
+  }
+
+  .input-row{
+    flex-direction: column;
+    gap: 20px;
+
+  }
+
+  .skill-row select,
+  .skill-row button, 
+  .name input, 
+  .goal input {
     padding: 5px;
     font-size: 12px;
   }
 
+  .input-row label, .skill-row label {
+    font-size: 14px;
+  }
+
+/* MEDIA QUESRIES FOR ACTION BUTTONS */
+
+.action-buttons {
+  justify-content: center;
+  gap: 10px;;
 }
-*/
 
 
+.action-buttons button {
+  flex-grow: 1;
+  flex-basis: 120px;
+  padding: 10px 10px;
+  font-size: 13px;
+
+}
 
 
-
-
+  }
 
 
 
