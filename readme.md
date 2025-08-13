@@ -22,5 +22,5 @@ HTML CSS Javascript and GitHub Pages with custom domain.
 
 ---
 
-**Wishing You a Happy Independence Day 2025!**  
+**Wishing You a Happy 79th Independence Day 2025!**  
 **Jai Hind!**

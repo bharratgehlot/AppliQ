@@ -1,12 +1,122 @@
 /* ----- Section 1 --- I for India and B for Bharat ----- */
-
+/*
 const OPTIONS = [
   "React", "React Native", "Angular", "Vue", "Java", "C++", "Python",
-  "Data Analysis", "Machine Learning", "Cloud", "DevOps", "Networking", "Flask", "Django",
-  "DSA", "Software Engineer", "Cybersecurity", "UI/UX", "Springboot", "Data Engineering", "R", "SQL"
+  "Data Analysis", "Machine Learning", "JavaScript", "Node.js", "ASP.NET", "API Development", "Docker", "Kubernetes", "Swift", "Rust", "Cloud Computing", "DevOps", "Networking", "Redux", "Ansible", "Flask", "Solution Architect", "Django", "HR", "Project Management", "Artificial Intelligence", "Prompt Engineering", "TypeScript", "Next.js", "Terraform", "NumPy", "Pandas", "Penetration Testing",
+  "WebAssembly (Wasm)",
+  "FastAPI",
+  "Express.js",
+  "Hadoop",
+  "Apache Spark",
+  "PostgreSQL",
+  "ServiceNow",
+  "Asana",
+  "Zapier",
+  "Figma",
+  "Git",
+  "GitHub",
+  "GitLab",
+  "Slack",
+  "Salesforce",
+  "Jira",
+  "Flutter",
+  "CI/CD",
+  "Scrum Master",
+  "MongoDB",
+  "Tableau",
+  "Unity",
+  "Site Reliability Engineering",
+  "Data Visualization (Tableau, Power BI)",
+  "GraphQL",
+  "Natural Language Processing",
+  "ETL Engineer",
+  "DSA", "Gen AI", "Golang", "Blockchain", "Ruby on Rails", "Agentic AI", "Software Testing", "Software Engineer", "Ruby", "Cybersecurity", "UI/UX", "Spring Boot", "Data Engineering", "R", "Big Data", "SQL", "Internet of Things (IoT)"
+];
+*/
+
+const OPTIONS = [
+  "React", // 1
+  "React Native", // 2
+  "Angular", // 3
+  "Vue", // 4
+  "Java", // 5
+  "C++", // 6
+  "Python", // 7
+  "Data Analysis", // 8
+  "Machine Learning", // 9
+  "JavaScript", // 10
+  "Node.js", // 11
+  "ASP.NET", // 12
+  "API Development", // 13
+  "Docker", // 14
+  "Kubernetes", // 15
+  "Swift", // 16
+  "Rust", // 17
+  "Cloud Computing", // 18
+  "DevOps", // 19
+  "Networking", // 20
+  "Redux", // 21
+  "Ansible", // 22
+  "Flask", // 23
+  "Solution Architect", // 24
+  "Django", // 25
+  "HR", // 26
+  "Project Management", // 27
+  "Artificial Intelligence", // 28
+  "Prompt Engineering", // 29
+  "TypeScript", // 30
+  "Next.js", // 31
+  "Terraform", // 32
+  "NumPy", // 33
+  "Pandas", // 34
+  "Penetration Testing", // 35
+  "WebAssembly (Wasm)", // 36
+  "FastAPI", // 37
+  "Express.js", // 38
+  "Hadoop", // 39
+  "Apache Spark", // 40
+  "PostgreSQL", // 41
+  "ServiceNow", // 42
+  "Asana", // 43
+  "Zapier", // 44
+  "Figma", // 45
+  "Git", // 46
+  "GitHub", // 47
+  "GitLab", // 48
+  "Slack", // 49
+  "Salesforce", // 50
+  "Jira", // 51
+  "Flutter", // 52
+  "CI/CD", // 53
+  "Scrum Master", // 54
+  "MongoDB", // 55
+  "Tableau", // 56
+  "Unity", // 57
+  "Site Reliability Engineering", // 58
+  "Data Visualization (Tableau, Power BI)", // 59
+  "GraphQL", // 60
+  "Natural Language Processing", // 61
+  "ETL Engineer", // 62
+  "DSA", // 63
+  "Gen AI", // 64
+  "Golang", // 65
+  "Blockchain", // 66
+  "Ruby on Rails", // 67
+  "Agentic AI", // 68
+  "Software Testing", // 69
+  "Software Engineer", // 70
+  "Ruby", // 71
+  "Cybersecurity", // 72
+  "UI/UX", // 73
+  "Spring Boot", // 74
+  "Data Engineering", // 75
+  "R", // 76
+  "Big Data", // 77
+  "SQL", // 78
+  "Internet of Things (IoT)" // 79
 ];
 
-
+/* 79 Because its 79th Independance Day */
 
 /* ----- Section 2 --- Empty arrays for Data storage ----- */
 
@@ -56,9 +166,14 @@ function renderLists() {
 likeBtn.addEventListener('click', () => {
   const val = skillSelect.value;
   if (val && !likesList.includes(val) && !dislikesList.includes(val)) {
+
+    if (likesList.length < 8) {
     likesList.push(val);
     renderLists();
+  } else {
+      alert('Maximum 8 likes can be added');
   }
+}
 });
 
 /* ----- Section 7 --- Append dislike button ----- */
@@ -67,10 +182,13 @@ likeBtn.addEventListener('click', () => {
 dislikeBtn.addEventListener('click', () => {
   const val = skillSelect.value;
   if (val && !likesList.includes(val) && !dislikesList.includes(val)) {
+    if (dislikesList.length < 8) { 
     dislikesList.push(val);
     renderLists();
   }
-});
+}
+}
+);
 
 /* ----- Section 8 --- function to draw tricolor flag ----- */
 
@@ -104,7 +222,7 @@ function drawTricolorBackground() {
 
 
   // Middle One 
-  
+
   ctx.fillStyle = '#ffffff';
   ctx.beginPath();
   ctx.moveTo(0, h * 0.08);

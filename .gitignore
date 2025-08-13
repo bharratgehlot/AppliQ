@@ -1,1 +1,8 @@
 info.txt
+
+# Test files and dependencies
+tests/
+node_modules/
+package.json
+package-lock.json
+app.testable.js
