@@ -44,13 +44,6 @@ body {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.container:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 14px rgba(255, 153, 51, 0.5),
-    0 10px 25px rgba(255, 255, 255, 0.35),
-    0 14px 35px rgba(19, 136, 8, 0.5);
-}
-
 
 /* ----- HERO SECTION ----- */
 
