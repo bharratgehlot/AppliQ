@@ -9,9 +9,21 @@ Prepare your likes and dislikes table in computer science to focus on specific g
 Our app helps you create a personalized career roadmap in the field of computer science. By identifying your strengths and weaknesses, you'll be able to make informed decisions about your career path.
 
 ### Screenshot
+
+### Screenshots
+<p align="center">
+  <img src="assets/screenshots/sc1.png" width="45%" />
+  <img src="assets/screenshots/sc2.png" width="45%" />
+</p>
+
+
+<p>
 ![Screenshot](assets/screenshots/sc1.png)
+![Screenshot](assets/screenshots/sc2.png)
+</p>
+
 ![Screenshot](assets/screenshots/sc2-big.png)
-![Screenshot](assets/screenshots/sc-final.png)
+
 
 ---
 
