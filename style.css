@@ -19,9 +19,10 @@
 body {
   margin: 0;
   font-family: Inter, Segoe UI, system-ui, Roboto, "Helvetica Neue", Arial;
-  background: rgba(128, 128, 128, 0.849); /*alt - white, gray*/
+  background: rgba(128, 128, 128, 0.849);
+  /*alt - white, gray*/
   color: #111;
-  -webkit-font-smoothing:antialiased;
+  -webkit-font-smoothing: antialiased;
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -35,11 +36,21 @@ body {
   width: 100%;
   max-width: 1000px;
   background: white;
-  border-radius: 8px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
-  overflow: hidden;
+  border-radius: 3px;
+  box-shadow: 0 4px 12px rgba(255, 153, 51, 0.4),
+    0 8px 20px rgba(255, 255, 255, 0.3),
+    0 12px 30px rgba(19, 136, 8, 0.4);
   animation: fadeIn 400ms ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
+.container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 14px rgba(255, 153, 51, 0.5),
+    0 10px 25px rgba(255, 255, 255, 0.35),
+    0 14px 35px rgba(19, 136, 8, 0.5);
+}
+
 
 /* ----- HERO SECTION ----- */
 
@@ -87,12 +98,12 @@ body {
 }
 
 .name,
-.goal{
+.goal {
   display: flex;
   align-items: center;
   gap: 8px;
   flex-wrap: wrap;
-  width: 45%;
+  width: 30%;
   /*  max-width: 400px; */
 }
 
@@ -149,7 +160,7 @@ body {
   cursor: pointer;
   transition: transform 150ms, opacity 150ms;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
-  
+
 }
 
 .skill-row .like-btn {
@@ -190,10 +201,21 @@ button:disabled {
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
-  border: 2px solid #c7ff5a;
-  padding: 5px;
+  border: 3px solid #ff9933;
+  padding: 15px;
   justify-content: center;
+  background: rgba(255, 153, 51, 0.05);
+  /* subtle tricolor bg */
+   animation: saffronShift 4s infinite ease-in-out;
+  box-shadow: 0 0 6px rgba(255, 153, 51, 0.4);
 }
+@keyframes saffronShift {
+  0%   { border-color: #ff9933; }
+  50%  { border-color: #ffffff; } /* strong contrast */
+  100% { border-color: #ff9933; }
+}
+
+
 
 .action-buttons button {
   background: var(--accent);
@@ -201,13 +223,16 @@ button:disabled {
   border: none;
   padding: 10px 14px;
   border-radius: 8px;
+  font-weight: 500;
   cursor: pointer;
-  transition: transform 150ms, opacity 150ms;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  transition: transform 300ms ease, box-shadow 300ms ease, background-color 300ms ease;
+  box-shadow: 0 4px 14px rgba(255, 153, 51, 0.25);
 }
-
 .action-buttons button:hover {
-  transform: translateY(-3px);
+  transform: translateY(-4px) scale(1.07);
+  background-color: #ffb14d; /* slightly brighter saffron */
+  box-shadow: 0 6px 20px rgba(255, 153, 51, 0.4),
+              0 0 12px rgba(255, 153, 51, 0.6); /* glow */
 }
 
 .action-buttons button:disabled {
@@ -215,6 +240,17 @@ button:disabled {
   transform: none;
   cursor: default;
 }
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
 
 
 .help-text {
@@ -287,7 +323,7 @@ canvas {
 
 @media(max-width: 440px) {
 
-    body {
+  body {
     padding: 5px;
   }
 
@@ -303,46 +339,49 @@ canvas {
     gap: 5px;
   }
 
-    .name, .goal{
+  .name,
+  .goal {
     width: 100%;
   }
 
-  .input-row{
+  .input-row {
     flex-direction: column;
     gap: 20px;
 
   }
 
   .skill-row select,
-  .skill-row button, 
-  .name input, 
+  .skill-row button,
+  .name input,
   .goal input {
     padding: 5px;
     font-size: 12px;
   }
 
-  .input-row label, .skill-row label {
+  .input-row label,
+  .skill-row label {
     font-size: 14px;
   }
 
-/* MEDIA QUESRIES FOR ACTION BUTTONS */
+  /* MEDIA QUESRIES FOR ACTION BUTTONS */
 
-.action-buttons {
-  justify-content: center;
-  gap: 10px;;
-}
+  .action-buttons {
+    justify-content: center;
+    gap: 10px;
+    ;
+  }
 
 
-.action-buttons button {
-  flex-grow: 1;
-  flex-basis: 120px;
-  padding: 10px 10px;
-  font-size: 13px;
-
-}
-
+  .action-buttons button {
+    flex-grow: 1;
+    flex-basis: 120px;
+    padding: 10px 10px;
+    font-size: 13px;
 
   }
+
+
+}
 
 
 
