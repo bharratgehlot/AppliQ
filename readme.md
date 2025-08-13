@@ -16,12 +16,6 @@ Our app helps you create a personalized career roadmap in the field of computer 
   <img src="assets/screenshots/sc2.png" width="45%" />
 </p>
 
-
-<p>
-![Screenshot](assets/screenshots/sc1.png)
-![Screenshot](assets/screenshots/sc2.png)
-</p>
-
 ![Screenshot](assets/screenshots/sc2-big.png)
 
 
