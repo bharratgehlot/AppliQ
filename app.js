@@ -348,15 +348,6 @@ function roundRect(ctx, x, y, w, h, r, fill, stroke) {
   if (stroke) ctx.stroke();
 }
 
-/* ----- Section 12 --- Decorations ??  ----- */
-
-
-//function drawDecorations(zone){
-//  const x = zone.x + 18, y = zone.y + 18, w = 80, h = 12;
-//  ctx.fillStyle = '#ff7f2a'; ctx.fillRect(x,y,w,h/3);
-//  ctx.fillStyle = '#ffffff'; ctx.fillRect(x,y+h/3,w,h/3);
-//  ctx.fillStyle = '#138a2a'; ctx.fillRect(x,y+(2*h/3),w,h/3);
-//}
 
 /* ----- Section 13 --- function to generate image  ----- */
 
