@@ -387,12 +387,17 @@ canvas {
 
   .skill-row {
     gap: 5px;
+    padding-left: 10px;
   }
 
   .name,
   .goal {
     width: 100%;
   }
+
+
+ 
+
 
   .input-row {
     flex-direction: column;
@@ -404,13 +409,13 @@ canvas {
   .skill-row button,
   .name input,
   .goal input {
-    padding: 5px;
-    font-size: 13px;
+    padding: 6px;
+    font-size: 14px;
   }
 
   .input-row label,
   .skill-row label {
-    font-size: 14px;
+    font-size: 15px;
   }
 
   .pill-container {
@@ -421,8 +426,8 @@ canvas {
 }
 
 .pill {
-  padding: 3px 11px;
-  font-size: 13px;
+  padding: 4px 11px;
+  font-size: 14px;
 }
 
 

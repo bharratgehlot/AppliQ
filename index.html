@@ -32,22 +32,20 @@
 
       <!-- Input Wrapper -->
 
-      <div class="input-row"> 
-      <!-- NAME INPUT -->
- 
-      <label class="name">
-        <span>Name:</span>
-        <input id="nameInput" type="text" placeholder="Full Name..." 
-          autocapitalize="words" maxlength="30" />
-      </label>
+      <div class="input-row">
+        <!-- NAME INPUT -->
 
-      <!-- Career Goal Input  -->
+        <label class="name">
+          <span>Name:</span>
+          <input id="nameInput" type="text" placeholder="Full Name..." autocapitalize="words" maxlength="30" />
+        </label>
 
-      <label class="goal">
-        <span>Dream Job: </span>
-        <input id="goalInput" type="text" placeholder="e.g., Software Engineer"
-           maxlength="40" />
-      </label>
+        <!-- Career Goal Input  -->
+
+        <label class="goal">
+          <span>Dream Job:</span>
+          <input id="goalInput" type="text" placeholder="e.g., Software Engineer" maxlength="40" />
+        </label>
 
 
       </div>
@@ -56,24 +54,27 @@
 
       <!-- SKILL INPUT -->
 
-      
+
       <div class="skill-row">
         <label for="skillSelect">Skills :</label>
         <select id="skillSelect" aria-label="Choose a skill to categorize">
           <option value="">Choose a skill...</option>
         </select>
-        <button class="like-btn" id="likeBtn" aria-label="Add selected skill to likes">👍 Like</button>
-        <button class="dis-btn" id="dislikeBtn" aria-label="Add selected skill to dislikes">👎 Dislike</button>
+        <button class="like-btn" id="likeBtn" id="warningSound" aria-label="Add selected skill to likes">👍 Like</button>
+        <button class="dis-btn" id="dislikeBtn" id="warningSound" aria-label="Add selected skill to dislikes">👎 Dislike</button>
       </div>
 
 
       <!-- Sounds Plays when click on like and dislike -->
 
 
-      <audio id="buttonSound" preload="auto" >
+      <audio id="buttonSound" preload="auto">
         <source src="assets/sounds/click2.wav" type="audio/wav">
       </audio>
 
+      <audio id="warningSound" preload="auto">
+        <source src="assets/sounds/warning.mp3" type="audio/mpeg">
+      </audio>
 
       <!-- LIKES DISLIKES HOLDER -->
 
@@ -90,16 +91,16 @@
 
       <div class="action-buttons">
 
-        <div class="action-buttons-row"> 
+        <div class="action-buttons-row">
 
-        <button type="button" id="generate">
-          <span class="btn-text">Generate Image</span>
-          <span class="loading" hidden>Generating...</span>
-        </button>
-        <button type="button" id="download" disabled aria-label="Download generated image as PNG">
-          Download PNG
-        </button>
-        <button type="button" id="whatsappShare" disabled>Share on WhatsApp</button>
+          <button type="button" id="generate">
+            <span class="btn-text">Generate Image</span>
+            <span class="loading" hidden>Generating...</span>
+          </button>
+          <button type="button" id="download" disabled aria-label="Download generated image as PNG">
+            Download PNG
+          </button>
+          <button type="button" id="whatsappShare">Share on WhatsApp</button>
         </div>
 
         <small class="help-text">Create your personalized career goals image</small>

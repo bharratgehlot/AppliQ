@@ -92,9 +92,7 @@ const likesList = [];
 const dislikesList = [];
 
 
-
 /* ----- Section 3 --- Variabled to be used in code and their names ----- */
-
 
 
 const nameInput = document.getElementById('nameInput');
@@ -107,11 +105,12 @@ const generateBtn = document.getElementById('generate');
 const downloadBtn = document.getElementById('download');
 const canvas = document.getElementById('outputCanvas');
 const ctx = canvas.getContext('2d');
+let imageGenerated = false;
+
 
 
 
 /* ----- Section 4 --- function to populate skills selections I guess ----- */
-
 
 
 function populateSkillOptions() {
@@ -162,7 +161,8 @@ function showToast(message, type = 'warning') {
 }
 
 
-// Replace your alert with:
+/* ----- Section 7 --- Handles Sound Effects ----- */
+
 
 function playSound() {
   const sound = document.getElementById('buttonSound');
@@ -170,6 +170,13 @@ function playSound() {
   sound.play().catch(e => console.log('Sound play failed:', e));
 }
 
+function warningSound() {
+  const sound = document.getElementById('warningSound');
+  sound.currentTime = 0;
+  sound.play().catch(e => console.log('Sound play failed:', e));
+}
+
+/* ----- Section 8 --- Append like button ----- */
 
 
 likeBtn.addEventListener('click', () => {
@@ -182,12 +189,13 @@ likeBtn.addEventListener('click', () => {
       playSound();
     } else {
       showToast('Maximum 7 likes can be added');
+      warningSound()
     }
   }
 });
 
 
-/* ----- Section 7 --- Append dislike button ----- */
+/* ----- Section 9 --- Append dislike button ----- */
 
 
 dislikeBtn.addEventListener('click', () => {
@@ -202,89 +210,13 @@ dislikeBtn.addEventListener('click', () => {
 
     } else {
       showToast('Maximum 7 dislikes can be added');
+      warningSound();
     }
   }
 }
 );
 
-/* ----- Section 8 --- function to draw tricolor flag ----- */
-
-
-function drawTricolorBackground1() {
-  const w = canvas.width, h = canvas.height;
-  const margin = 50; // margin to trim left and right
-
-  ctx.clearRect(0, 0, w, h);
-
-/*
-  // Top Level
-
-  ctx.fillStyle = '#ff7f2a';
-  ctx.beginPath();
-  ctx.moveTo(0, 0);
-  ctx.lineTo(w, 0);
-  ctx.lineTo(w, h * 0.18);
-  ctx.lineTo(0, h * 0.08);
-  ctx.closePath();
-  ctx.fill();
-
-
-  // Middle One 
-
-  ctx.fillStyle = '#ffffff';
-  ctx.beginPath();
-  ctx.moveTo(0, h * 0.08);
-  ctx.lineTo(w, h * 0.18);
-  ctx.lineTo(w, h * 0.92);
-  ctx.lineTo(0, h * 0.82);
-  ctx.closePath();
-  ctx.fill();
-
-
-  // Bottom Level
-
-  ctx.fillStyle = '#138a2a';
-  ctx.beginPath();
-  ctx.moveTo(w, h);
-  ctx.lineTo(0, h);
-  ctx.lineTo(0, h * 0.82);
-  ctx.lineTo(w, h * 0.92);
-  ctx.closePath();
-  ctx.fill();
-
-*/
-
-// Top Level
-
-  ctx.fillStyle = '#ff7f2a';
-  ctx.beginPath();
-  ctx.moveTo(margin, 0);
-  ctx.lineTo(w - margin, 0);
-  ctx.lineTo(w - margin, h * 0.18);
-  ctx.lineTo(margin, h * 0.08);
-  ctx.closePath();
-  ctx.fill();
-
-  // Middle One 
-  ctx.fillStyle = '#ffffff';
-  ctx.beginPath();
-  ctx.moveTo(margin, h * 0.08);
-  ctx.lineTo(w - margin, h * 0.18);
-  ctx.lineTo(w - margin, h * 0.92);
-  ctx.lineTo(margin, h * 0.82);
-  ctx.closePath();
-  ctx.fill();
-
-  // Bottom Level
-  ctx.fillStyle = '#138a2a';
-  ctx.beginPath();
-  ctx.moveTo(w - margin, h);
-  ctx.lineTo(margin, h);
-  ctx.lineTo(margin, h * 0.82);
-  ctx.lineTo(w - margin, h * 0.92);
-  ctx.closePath();
-  ctx.fill();
-}
+/* ----- Section 10 --- function to draw tricolor flag ----- */
 
 
 function drawTricolorBackground() {
@@ -293,6 +225,7 @@ function drawTricolorBackground() {
   ctx.clearRect(0, 0, w, h);
 
   // Top Level (Orange)
+
   ctx.fillStyle = '#ff7f2a';
   ctx.beginPath();
   ctx.moveTo(margin, 0);
@@ -303,6 +236,7 @@ function drawTricolorBackground() {
   ctx.fill();
 
 // Middle One (White)
+
 ctx.fillStyle = '#ffffff';
 ctx.beginPath();
 ctx.moveTo(margin, h * 0.15);
@@ -312,8 +246,8 @@ ctx.lineTo(margin, h * 0.75);      // Connect to green top-left
 ctx.closePath();
 ctx.fill();
 
-
   // Bottom Level (Green) - inverted of orange
+
   ctx.fillStyle = '#138a2a';
   ctx.beginPath();
   ctx.moveTo(margin, h);
@@ -325,8 +259,7 @@ ctx.fill();
 }
 
 
-
-/* ----- Section 9 --- Draw safezone ----- */
+/* ----- Section 11 --- Draw safezone ----- */
 
 
 function drawSafeZone() {
@@ -348,16 +281,11 @@ function drawSafeZone() {
   ctx.fillStyle = '#ffffffff';
   ctx.fillRect(zone.x, zone.y, zone.width, zone.height);
   ctx.save();
-
- // ctx.strokeStyle = 'rgba(0,0,0,0.08)';
- // ctx.setLineDash([8, 6]);
- // ctx.lineWidth = 2;
- // ctx.strokeRect(zone.x + 12, zone.y + 12, zone.width - 24, zone.height - 24);
   ctx.restore();
   return zone;
 }
 
-/* ----- Section 10 --- To draw text area ----- */
+/* ----- Section 12 --- To draw text area ----- */
 
 
 function drawTextColumns(zone, name, dislikes, likes) {
@@ -379,23 +307,13 @@ function drawTextColumns(zone, name, dislikes, likes) {
   ctx.fillText(name || 'Your Name', zone.x + zone.width / 2, zone.y + 34);
 
   ctx.font = '600 18px Inter, Arial'; ctx.textAlign = 'center';
-
-
-  //ctx.fillText('Likes', leftX, startY - 30);
-  //ctx.fillText('Dislikes', rightX, startY - 30);
-
   ctx.fillText('Likes', leftColumnCenter, startY - 30);
   ctx.fillText('Dislikes', rightColumnCenter, startY - 30);
-
-
-  
-
   ctx.font = '15px Inter, Arial';
   const maxItems = 8;
 
   for (let i = 0; i < maxItems; i++) {
     const y = startY + i * lineHeight;
-
 
     if (likes[i]) {
       const text = likes[i];
@@ -403,12 +321,10 @@ function drawTextColumns(zone, name, dislikes, likes) {
       ctx.fillStyle = '#c7ff5a';
       const pillX = leftColumnCenter - (tw + 18) / 2;
 
-
       roundRect(ctx, pillX, y - 18, tw + 18, 26, 4, true, false);
       ctx.fillStyle = '#0c0c0c';
       ctx.textAlign = 'center';
       ctx.fillText(text, leftColumnCenter, y);
-      //ctx.fillText(text, leftX + 9, y);
     }
 
     if (dislikes[i]) {
@@ -427,74 +343,7 @@ function drawTextColumns(zone, name, dislikes, likes) {
 }
 
 
-/*
-
-function drawTextColumns(zone, name, dislikes, likes) {
-  // Layout constants
-  const COLUMN_PADDING = 28;
-  const HEADER_OFFSET = 100;
-  const ITEM_HEIGHT = 34;
-  const PILL_VERTICAL_OFFSET = 18;
-  const PILL_HORIZONTAL_PADDING = 20;
-  const PILL_BORDER_RADIUS = 4;
-  const COLUMN_GAP = 180; // Increased gap for more space
-  
-  const centerX = zone.x + zone.width / 2;
-  const leftColumnX = centerX - COLUMN_GAP / 2;
-  const rightColumnX = centerX + COLUMN_GAP / 2;
-  const startY = zone.y + HEADER_OFFSET;
-  const maxItems = 8;
-
-  // Draw name header
-  ctx.fillStyle = '#111';
-  ctx.font = 'bold 28px Inter, system-ui, Arial';
-  ctx.textAlign = 'center';
-  ctx.fillText(name || 'Your Name', centerX, zone.y + 34);
-
-  // Draw column headers (flipped)
-  ctx.font = '600 18px Inter, Arial';
-  ctx.textAlign = 'center';
-  ctx.fillText('Likes', leftColumnX, startY - 30);
-  ctx.fillText('Dislikes', rightColumnX, startY - 30);
-
-  // Draw items
-  ctx.font = '15px Inter, Arial';
-  for (let i = 0; i < maxItems; i++) {
-    const y = startY + i * ITEM_HEIGHT;
-    
-    // Draw likes (left side - right-aligned to center gap)
-    if (likes[i]) {
-      const text = likes[i];
-      const textWidth = ctx.measureText(text).width;
-      const pillX = leftColumnX - textWidth - 18;
-      
-      ctx.fillStyle = '#c7ff5a';
-      roundRect(ctx, pillX, y - PILL_VERTICAL_OFFSET, textWidth + 18, 26, PILL_BORDER_RADIUS, true, false);
-      
-      ctx.fillStyle = '#0c0c0c';
-      ctx.textAlign = 'left';
-      ctx.fillText(text, pillX + 9, y);
-    }
-    
-    // Draw dislikes (right side - left-aligned from center gap)
-    if (dislikes[i]) {
-      const text = '- ' + dislikes[i];
-      const textWidth = ctx.measureText(text).width;
-      
-      ctx.fillStyle = '#e53935';
-      roundRect(ctx, rightColumnX, y - PILL_VERTICAL_OFFSET, textWidth + PILL_HORIZONTAL_PADDING, 26, PILL_BORDER_RADIUS, true, false);
-      
-      ctx.fillStyle = 'white';
-      ctx.textAlign = 'left';
-      ctx.fillText(text, rightColumnX + 10, y);
-    }
-  }
-}
-
- ----- Section 10 --- Draw decorations ----- */
-
-
-/* ----- Section 11 --- What this code even do ?? ----- */
+/* ----- Section 13 --- What this code even do ?? ----- */
 
 
 function roundRect(ctx, x, y, w, h, r, fill, stroke) {
@@ -510,25 +359,25 @@ function roundRect(ctx, x, y, w, h, r, fill, stroke) {
 }
 
 
-/* ----- Section 13 --- function to generate image  ----- */
+/* ----- Section 14 --- function to generate image  ----- */
 
 
 function generateImage() {
   drawTricolorBackground();
   const zone = drawSafeZone();
   drawTextColumns(zone, nameInput.value, dislikesList, likesList);
-  //drawDecorations(zone);
   downloadBtn.disabled = false;
+  imageGenerated = true;
 }
 
-/* ----- Section 14 --- function to download image  ----- */
+/* ----- Section 15 --- function to download image and reload the page ----- */
 
 
 function downloadImage() {
   const url = canvas.toDataURL('image/png');
   const a = document.createElement('a');
   a.href = url;
-  a.download = (nameInput.value ? nameInput.value.replace(/\s+/g, '_') : 'appliq') + '_career.png';
+  a.download = (nameInput.value ? nameInput.value.replace(/\s+/g, '_') : 'i-for-india') + '_career-goals.png';
   document.body.appendChild(a);
   a.click();
   a.remove();
@@ -537,14 +386,30 @@ function downloadImage() {
 window.addEventListener('load', () => {
   populateSkillOptions();
   generateImage();
+  imageGenerated = false;
   generateBtn.addEventListener('click', generateImage);
   downloadBtn.addEventListener('click', downloadImage);
+  document.getElementById('whatsappShare').addEventListener('click', shareOnWhatsApp);
 });
 
+/* ----- Section 16 --- function to share image on WhatsApp ----- */
 
-/* ----- Section 15 --- Plays sound when clicking like and dislikes ----- */
-
-
-
-
-
+function shareOnWhatsApp() {
+  if (!imageGenerated) {
+    showToast('Please generate an image first', 'error');
+    warningSound();
+    return;
+  }
+  
+  canvas.toBlob((blob) => {
+    const file = new File([blob], 'career-goals.png', { type: 'image/png' });
+    const text = 'Check out my career goals for Independence Day 2025! 🇮🇳';
+    
+    if (navigator.share && navigator.canShare({ files: [file] })) {
+      navigator.share({ files: [file], text });
+    } else {
+      const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(text)}`;
+      window.open(whatsappUrl, '_blank');
+    }
+  });
+}
