@@ -164,6 +164,13 @@ function showToast(message, type = 'warning') {
 
 // Replace your alert with:
 
+function playSound() {
+  const sound = document.getElementById('buttonSound');
+  sound.currentTime = 0;
+  sound.play().catch(e => console.log('Sound play failed:', e));
+}
+
+
 
 likeBtn.addEventListener('click', () => {
   const val = skillSelect.value;
@@ -172,6 +179,7 @@ likeBtn.addEventListener('click', () => {
     if (likesList.length < 7) {
       likesList.push(val);
       renderLists();
+      playSound();
     } else {
       showToast('Maximum 7 likes can be added');
     }
@@ -189,6 +197,9 @@ dislikeBtn.addEventListener('click', () => {
     if (dislikesList.length < 7) {
       dislikesList.push(val);
       renderLists();
+
+       playSound();
+
     } else {
       showToast('Maximum 7 dislikes can be added');
     }
@@ -531,7 +542,9 @@ window.addEventListener('load', () => {
 });
 
 
+/* ----- Section 15 --- Plays sound when clicking like and dislikes ----- */
 
-// Some other functions testing 
+
+
 
 
