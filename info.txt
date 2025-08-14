@@ -9,3 +9,4 @@ How to change git repo name?
 I Love breaking things and fixing the broken things
 
 Add one celebrate button
+add sound effect when liking disliking

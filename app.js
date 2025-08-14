@@ -1,38 +1,4 @@
 /* ----- Section 1 --- I for India and B for Bharat ----- */
-/*
-const OPTIONS = [
-  "React", "React Native", "Angular", "Vue", "Java", "C++", "Python",
-  "Data Analysis", "Machine Learning", "JavaScript", "Node.js", "ASP.NET", "API Development", "Docker", "Kubernetes", "Swift", "Rust", "Cloud Computing", "DevOps", "Networking", "Redux", "Ansible", "Flask", "Solution Architect", "Django", "HR", "Project Management", "Artificial Intelligence", "Prompt Engineering", "TypeScript", "Next.js", "Terraform", "NumPy", "Pandas", "Penetration Testing",
-  "WebAssembly (Wasm)",
-  "FastAPI",
-  "Express.js",
-  "Hadoop",
-  "Apache Spark",
-  "PostgreSQL",
-  "ServiceNow",
-  "Asana",
-  "Zapier",
-  "Figma",
-  "Git",
-  "GitHub",
-  "GitLab",
-  "Slack",
-  "Salesforce",
-  "Jira",
-  "Flutter",
-  "CI/CD",
-  "Scrum Master",
-  "MongoDB",
-  "Tableau",
-  "Unity",
-  "Site Reliability Engineering",
-  "Data Visualization (Tableau, Power BI)",
-  "GraphQL",
-  "Natural Language Processing",
-  "ETL Engineer",
-  "DSA", "Gen AI", "Golang", "Blockchain", "Ruby on Rails", "Agentic AI", "Software Testing", "Software Engineer", "Ruby", "Cybersecurity", "UI/UX", "Spring Boot", "Data Engineering", "R", "Big Data", "SQL", "Internet of Things (IoT)"
-];
-*/
 
 const OPTIONS = [
   "React", // 1
@@ -117,15 +83,19 @@ const OPTIONS = [
 ];
 
 /* 79 Because its 79th Independance Day */
+/*Not using all beacuse it will create a lot of confusion
 
 /* ----- Section 2 --- Empty arrays for Data storage ----- */
+
 
 const likesList = [];
 const dislikesList = [];
 
 
 
-/* ----- Section 3 --- Some shit I don't understand now but will later ----- */
+/* ----- Section 3 --- Variabled to be used in code and their names ----- */
+
+
 
 const nameInput = document.getElementById('nameInput');
 const skillSelect = document.getElementById('skillSelect');
@@ -141,6 +111,8 @@ const ctx = canvas.getContext('2d');
 
 
 /* ----- Section 4 --- function to populate skills selections I guess ----- */
+
+
 
 function populateSkillOptions() {
   OPTIONS.forEach(opt => {
@@ -160,7 +132,9 @@ function renderLists() {
   dislikesContainer.innerHTML = dislikesList.map(skill => `<span class="pill dislike">${skill}</span>`).join(' ');
 }
 
+
 /* ----- Section 6 --- Append like button ----- */
+
 
 function showToast(message, type = 'warning') {
   const toast = document.createElement('div');
@@ -185,23 +159,21 @@ function showToast(message, type = 'warning') {
 
   setTimeout(() => toast.remove(),
     3000);
-
-
 }
 
-// Replace your alert with:
 
+// Replace your alert with:
 
 
 likeBtn.addEventListener('click', () => {
   const val = skillSelect.value;
   if (val && !likesList.includes(val) && !dislikesList.includes(val)) {
 
-    if (likesList.length < 8) {
+    if (likesList.length < 7) {
       likesList.push(val);
       renderLists();
     } else {
-      showToast('Maximum 8 likes can be added');
+      showToast('Maximum 7 likes can be added');
     }
   }
 });
@@ -214,11 +186,11 @@ dislikeBtn.addEventListener('click', () => {
   const val = skillSelect.value;
   if (val && !likesList.includes(val) && !dislikesList.includes(val)) {
 
-    if (dislikesList.length < 8) {
+    if (dislikesList.length < 7) {
       dislikesList.push(val);
       renderLists();
     } else {
-      showToast('Maximum 8 dislikes can be added');
+      showToast('Maximum 7 dislikes can be added');
     }
   }
 }
@@ -227,11 +199,13 @@ dislikeBtn.addEventListener('click', () => {
 /* ----- Section 8 --- function to draw tricolor flag ----- */
 
 
-function drawTricolorBackground() {
+function drawTricolorBackground1() {
   const w = canvas.width, h = canvas.height;
+  const margin = 50; // margin to trim left and right
+
   ctx.clearRect(0, 0, w, h);
 
-
+/*
   // Top Level
 
   ctx.fillStyle = '#ff7f2a';
@@ -240,17 +214,6 @@ function drawTricolorBackground() {
   ctx.lineTo(w, 0);
   ctx.lineTo(w, h * 0.18);
   ctx.lineTo(0, h * 0.08);
-  ctx.closePath();
-  ctx.fill();
-
-  // Bottom Level
-
-  ctx.fillStyle = '#138a2a';
-  ctx.beginPath();
-  ctx.moveTo(w, h);
-  ctx.lineTo(0, h);
-  ctx.lineTo(0, h * 0.82);
-  ctx.lineTo(w, h * 0.92);
   ctx.closePath();
   ctx.fill();
 
@@ -267,26 +230,118 @@ function drawTricolorBackground() {
   ctx.fill();
 
 
+  // Bottom Level
+
+  ctx.fillStyle = '#138a2a';
+  ctx.beginPath();
+  ctx.moveTo(w, h);
+  ctx.lineTo(0, h);
+  ctx.lineTo(0, h * 0.82);
+  ctx.lineTo(w, h * 0.92);
+  ctx.closePath();
+  ctx.fill();
+
+*/
+
+// Top Level
+
+  ctx.fillStyle = '#ff7f2a';
+  ctx.beginPath();
+  ctx.moveTo(margin, 0);
+  ctx.lineTo(w - margin, 0);
+  ctx.lineTo(w - margin, h * 0.18);
+  ctx.lineTo(margin, h * 0.08);
+  ctx.closePath();
+  ctx.fill();
+
+  // Middle One 
+  ctx.fillStyle = '#ffffff';
+  ctx.beginPath();
+  ctx.moveTo(margin, h * 0.08);
+  ctx.lineTo(w - margin, h * 0.18);
+  ctx.lineTo(w - margin, h * 0.92);
+  ctx.lineTo(margin, h * 0.82);
+  ctx.closePath();
+  ctx.fill();
+
+  // Bottom Level
+  ctx.fillStyle = '#138a2a';
+  ctx.beginPath();
+  ctx.moveTo(w - margin, h);
+  ctx.lineTo(margin, h);
+  ctx.lineTo(margin, h * 0.82);
+  ctx.lineTo(w - margin, h * 0.92);
+  ctx.closePath();
+  ctx.fill();
 }
+
+
+function drawTricolorBackground() {
+  const w = canvas.width, h = canvas.height;
+  const margin = 50; // margin to trim left and right
+  ctx.clearRect(0, 0, w, h);
+
+  // Top Level (Orange)
+  ctx.fillStyle = '#ff7f2a';
+  ctx.beginPath();
+  ctx.moveTo(margin, 0);
+  ctx.lineTo(w - margin, 0);
+  ctx.lineTo(w - margin, h * 0.25);
+  ctx.lineTo(margin, h * 0.15);
+  ctx.closePath();
+  ctx.fill();
+
+// Middle One (White)
+ctx.fillStyle = '#ffffff';
+ctx.beginPath();
+ctx.moveTo(margin, h * 0.15);
+ctx.lineTo(w - margin, h * 0.25);
+ctx.lineTo(w - margin, h * 0.85);  // Connect to green top-right
+ctx.lineTo(margin, h * 0.75);      // Connect to green top-left
+ctx.closePath();
+ctx.fill();
+
+
+  // Bottom Level (Green) - inverted of orange
+  ctx.fillStyle = '#138a2a';
+  ctx.beginPath();
+  ctx.moveTo(margin, h);
+  ctx.lineTo(w - margin, h);
+  ctx.lineTo(w - margin, h * 0.85);  // Higher on right
+  ctx.lineTo(margin, h * 0.75);  // Lower on left
+  ctx.closePath();
+  ctx.fill();
+}
+
+
 
 /* ----- Section 9 --- Draw safezone ----- */
 
 
 function drawSafeZone() {
-
   const w = canvas.width, h = canvas.height;
+  const margin = 50;
+  const sideMargin = 100;  
 
-  const zone = { x: (w - w * 0.75) / 2, y: h * 0.19, width: w * 0.75, height: h * 0.62 };
+  // Calculate safe area within white section
+  const topY = Math.max(h * 0.25, h * 0.15) + 5; // Below orange
+  const bottomY = Math.min(h * 0.75, h * 0.85) - 5; // Above green
+
+ const zone = { 
+    x: margin + sideMargin, 
+    y: topY, 
+    width: (w - margin * 2) - (sideMargin * 2), 
+    height: bottomY - topY 
+  };
 
   ctx.fillStyle = '#ffffffff';
   ctx.fillRect(zone.x, zone.y, zone.width, zone.height);
-
   ctx.save();
 
-  ctx.strokeStyle = 'rgba(0,0,0,0.08)';
-  ctx.setLineDash([8, 6]);
-  ctx.lineWidth = 2;
-  ctx.strokeRect(zone.x + 12, zone.y + 12, zone.width - 24, zone.height - 24);
+ // ctx.strokeStyle = 'rgba(0,0,0,0.08)';
+ // ctx.setLineDash([8, 6]);
+ // ctx.lineWidth = 2;
+ // ctx.strokeRect(zone.x + 12, zone.y + 12, zone.width - 24, zone.height - 24);
   ctx.restore();
   return zone;
 }
@@ -295,42 +350,137 @@ function drawSafeZone() {
 
 
 function drawTextColumns(zone, name, dislikes, likes) {
+  // amazonq-ignore-next-line
   const padding = 28;
-  const leftX = zone.x + padding;
-  const rightX = zone.x + zone.width / 2 + padding / 2;
+
+  //const leftX = zone.x + padding;
+  //const rightX = zone.x + zone.width / 2 + padding / 2;
+
+  const leftColumnCenter = zone.x + zone.width / 4;
+  const rightColumnCenter = zone.x + (zone.width * 3) / 4;
+
   const startY = zone.y + 100;
   const lineHeight = 34;
 
+  // amazonq-ignore-next-line
   ctx.fillStyle = '#111'; ctx.font = 'bold 28px Inter, system-ui, Arial';
   ctx.textAlign = 'center';
   ctx.fillText(name || 'Your Name', zone.x + zone.width / 2, zone.y + 34);
 
-  ctx.font = '600 18px Inter, Arial'; ctx.textAlign = 'left';
-  ctx.fillText('Dislikes', leftX, startY - 30);
-  ctx.fillText('Likes', rightX, startY - 30);
+  ctx.font = '600 18px Inter, Arial'; ctx.textAlign = 'center';
+
+
+  //ctx.fillText('Likes', leftX, startY - 30);
+  //ctx.fillText('Dislikes', rightX, startY - 30);
+
+  ctx.fillText('Likes', leftColumnCenter, startY - 30);
+  ctx.fillText('Dislikes', rightColumnCenter, startY - 30);
+
+
+  
 
   ctx.font = '15px Inter, Arial';
   const maxItems = 8;
+
   for (let i = 0; i < maxItems; i++) {
     const y = startY + i * lineHeight;
-    if (dislikes[i]) {
-      const text = '- ' + dislikes[i];
-      const tw = ctx.measureText(text).width;
-      ctx.fillStyle = '#e53935';
-      roundRect(ctx, leftX, y - 18, tw + 20, 26, 4, true, false);
-      ctx.fillStyle = 'white';
-      ctx.fillText(text, leftX + 10, y);
-    }
+
+
     if (likes[i]) {
       const text = likes[i];
       const tw = ctx.measureText(text).width;
       ctx.fillStyle = '#c7ff5a';
-      roundRect(ctx, rightX, y - 18, tw + 18, 26, 4, true, false);
+      const pillX = leftColumnCenter - (tw + 18) / 2;
+
+
+      roundRect(ctx, pillX, y - 18, tw + 18, 26, 4, true, false);
       ctx.fillStyle = '#0c0c0c';
-      ctx.fillText(text, rightX + 9, y);
+      ctx.textAlign = 'center';
+      ctx.fillText(text, leftColumnCenter, y);
+      //ctx.fillText(text, leftX + 9, y);
+    }
+
+    if (dislikes[i]) {
+      const text = '- ' + dislikes[i];
+      const tw = ctx.measureText(text).width;
+      ctx.fillStyle = '#e53935';
+
+      const pillX = rightColumnCenter - (tw + 20) / 2;
+
+      roundRect(ctx, pillX, y - 18, tw + 20, 26, 4, true, false);
+      ctx.fillStyle = 'white';
+      ctx.textAlign = 'center';
+      ctx.fillText(text, rightColumnCenter, y);
     }
   }
 }
+
+
+/*
+
+function drawTextColumns(zone, name, dislikes, likes) {
+  // Layout constants
+  const COLUMN_PADDING = 28;
+  const HEADER_OFFSET = 100;
+  const ITEM_HEIGHT = 34;
+  const PILL_VERTICAL_OFFSET = 18;
+  const PILL_HORIZONTAL_PADDING = 20;
+  const PILL_BORDER_RADIUS = 4;
+  const COLUMN_GAP = 180; // Increased gap for more space
+  
+  const centerX = zone.x + zone.width / 2;
+  const leftColumnX = centerX - COLUMN_GAP / 2;
+  const rightColumnX = centerX + COLUMN_GAP / 2;
+  const startY = zone.y + HEADER_OFFSET;
+  const maxItems = 8;
+
+  // Draw name header
+  ctx.fillStyle = '#111';
+  ctx.font = 'bold 28px Inter, system-ui, Arial';
+  ctx.textAlign = 'center';
+  ctx.fillText(name || 'Your Name', centerX, zone.y + 34);
+
+  // Draw column headers (flipped)
+  ctx.font = '600 18px Inter, Arial';
+  ctx.textAlign = 'center';
+  ctx.fillText('Likes', leftColumnX, startY - 30);
+  ctx.fillText('Dislikes', rightColumnX, startY - 30);
+
+  // Draw items
+  ctx.font = '15px Inter, Arial';
+  for (let i = 0; i < maxItems; i++) {
+    const y = startY + i * ITEM_HEIGHT;
+    
+    // Draw likes (left side - right-aligned to center gap)
+    if (likes[i]) {
+      const text = likes[i];
+      const textWidth = ctx.measureText(text).width;
+      const pillX = leftColumnX - textWidth - 18;
+      
+      ctx.fillStyle = '#c7ff5a';
+      roundRect(ctx, pillX, y - PILL_VERTICAL_OFFSET, textWidth + 18, 26, PILL_BORDER_RADIUS, true, false);
+      
+      ctx.fillStyle = '#0c0c0c';
+      ctx.textAlign = 'left';
+      ctx.fillText(text, pillX + 9, y);
+    }
+    
+    // Draw dislikes (right side - left-aligned from center gap)
+    if (dislikes[i]) {
+      const text = '- ' + dislikes[i];
+      const textWidth = ctx.measureText(text).width;
+      
+      ctx.fillStyle = '#e53935';
+      roundRect(ctx, rightColumnX, y - PILL_VERTICAL_OFFSET, textWidth + PILL_HORIZONTAL_PADDING, 26, PILL_BORDER_RADIUS, true, false);
+      
+      ctx.fillStyle = 'white';
+      ctx.textAlign = 'left';
+      ctx.fillText(text, rightColumnX + 10, y);
+    }
+  }
+}
+
+ ----- Section 10 --- Draw decorations ----- */
 
 
 /* ----- Section 11 --- What this code even do ?? ----- */
