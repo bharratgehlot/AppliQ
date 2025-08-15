@@ -179,7 +179,7 @@ function warningSound() {
 function duplicateInput() {
   const sound = document.getElementById('duplicateInput');
   sound.currentime = 0;
-  sound.play().catch(e=> console.log('Error playinh sound'))
+  sound.play().catch(e => console.log('Error playinh sound'))
 }
 
 
@@ -327,16 +327,16 @@ function drawTricolorBackground() {
   ctx.closePath();
   ctx.fill();
 
-// Middle One (White)
+  // Middle One (White)
 
-ctx.fillStyle = '#ffffff';
-ctx.beginPath();
-ctx.moveTo(margin, h * 0.15);
-ctx.lineTo(w - margin, h * 0.25);
-ctx.lineTo(w - margin, h * 0.85);  // Connect to green top-right
-ctx.lineTo(margin, h * 0.75);      // Connect to green top-left
-ctx.closePath();
-ctx.fill();
+  ctx.fillStyle = '#ffffff';
+  ctx.beginPath();
+  ctx.moveTo(margin, h * 0.15);
+  ctx.lineTo(w - margin, h * 0.25);
+  ctx.lineTo(w - margin, h * 0.85);  // Connect to green top-right
+  ctx.lineTo(margin, h * 0.75);      // Connect to green top-left
+  ctx.closePath();
+  ctx.fill();
 
   // Bottom Level (Green) - inverted of orange
 
@@ -357,17 +357,17 @@ ctx.fill();
 function drawSafeZone() {
   const w = canvas.width, h = canvas.height;
   const margin = 50;
-  const sideMargin = 100;  
+  const sideMargin = 100;
 
   // Calculate safe area within white section
   const topY = Math.max(h * 0.25, h * 0.15) + 5; // Below orange
   const bottomY = Math.min(h * 0.75, h * 0.85) - 5; // Above green
 
- const zone = { 
-    x: margin + sideMargin, 
-    y: topY, 
-    width: (w - margin * 2) - (sideMargin * 2), 
-    height: bottomY - topY 
+  const zone = {
+    x: margin + sideMargin,
+    y: topY,
+    width: (w - margin * 2) - (sideMargin * 2),
+    height: bottomY - topY
   };
 
   ctx.fillStyle = '#ffffffff';
@@ -479,7 +479,17 @@ window.addEventListener('load', () => {
   populateSkillOptions();
   generateImage();
   imageGenerated = false;
-  generateBtn.addEventListener('click', generateImage);
+  //generateBtn.addEventListener('click', generateImage); 
+  generateBtn.addEventListener('click', () => {
+    if (!nameInput.value.trim()) {
+      showToast('What\'s your name?');
+      warningSound();
+      return;
+    }
+    generateImage();
+  });
+
+
   downloadBtn.addEventListener('click', downloadImage);
   document.getElementById('whatsappShare').addEventListener('click', shareOnWhatsApp);
 });
@@ -492,16 +502,13 @@ function shareOnWhatsApp() {
     warningSound();
     return;
   }
-  
+
   canvas.toBlob((blob) => {
     const file = new File([blob], 'career-goals.png', { type: 'image/png' });
-    const text = 'Check out my career goals for Independence Day 2025! 🇮🇳';
-    
-    if (navigator.share && navigator.canShare({ files: [file] })) {
-      navigator.share({ files: [file], text });
-    } else {
+    const text = 'Check out my career goals for Independence Day 2025! => www.iforindia.online';
+
       const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(text)}`;
       window.open(whatsappUrl, '_blank');
-    }
+   
   });
 }
