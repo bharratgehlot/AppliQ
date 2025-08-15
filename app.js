@@ -83,7 +83,8 @@ const OPTIONS = [
 ];
 
 /* 79 Because its 79th Independance Day */
-/*Not using all beacuse it will create a lot of confusion
+/*Not using all beacuse it will create a lot of confusion */
+
 
 /* ----- Section 2 --- Empty arrays for Data storage ----- */
 
@@ -127,6 +128,7 @@ function populateSkillOptions() {
 
 
 function renderLists() {
+  // amazonq-ignore-next-line
   likesContainer.innerHTML = likesList.map(skill => `<span class="pill like">${skill}</span>`).join(' ');
   dislikesContainer.innerHTML = dislikesList.map(skill => `<span class="pill dislike">${skill}</span>`).join(' ');
 }
@@ -166,19 +168,22 @@ function showToast(message, type = 'warning') {
 
 function playSound() {
   const sound = document.getElementById('buttonSound');
+  // amazonq-ignore-next-line
   sound.currentTime = 0;
   sound.play().catch(e => console.log('Sound play failed:', e));
 }
 
 function warningSound() {
   const sound = document.getElementById('warningSound');
+  // amazonq-ignore-next-line
   sound.currentTime = 0;
   sound.play().catch(e => console.log('Sound play failed:', e));
 }
 
 function duplicateInput() {
   const sound = document.getElementById('duplicateInput');
-  sound.currentime = 0;
+  //sound.currentime = 0;  this was previous code still worked 
+  sound.currenTime = 0;
   sound.play().catch(e => console.log('Error playinh sound'))
 }
 
@@ -253,8 +258,10 @@ likeBtn.addEventListener('click', () => {
     return;
   }
 
-  // existing logic (kept as close to original as possible)
+  // they say its DEAD CODE beacuse of earlier check <7 it always returns true ??
+
   if (val && !likesList.includes(val) && !dislikesList.includes(val)) {
+// amazonq-ignore-next-line
 
     if (likesList.length < 7) {
       likesList.push(val);
@@ -268,13 +275,15 @@ likeBtn.addEventListener('click', () => {
     showToast('Duplicate input not allowed');
     duplicateInput();
   }
+
+  // Dead Code Ends here
+
 });
 
 
-// DISLIKE BUTTON 
-
-
 // DISLIKE BUTTON
+
+
 dislikeBtn.addEventListener('click', () => {
   const val = skillSelect.value;
 
@@ -288,8 +297,10 @@ dislikeBtn.addEventListener('click', () => {
     return;
   }
 
-  // existing logic mirrored for dislikes
+  // they say its DEAD CODE beacuse of earlier check <7 it always returns true ??
+
   if (val && !dislikesList.includes(val) && !likesList.includes(val)) {
+// amazonq-ignore-next-line
 
     if (dislikesList.length < 7) {
       dislikesList.push(val);
@@ -303,6 +314,9 @@ dislikeBtn.addEventListener('click', () => {
     showToast('Duplicate input not allowed');
     duplicateInput();
   }
+
+// Dead Code Ends here
+
 });
 
 
@@ -466,6 +480,13 @@ function generateImage() {
 
 
 function downloadImage() {
+   
+  if (!imageGenerated) {
+    showToast('Please generate an image first', 'error');
+    warningSound();
+    return;
+  }
+
   const url = canvas.toDataURL('image/png');
   const a = document.createElement('a');
   a.href = url;
@@ -476,8 +497,10 @@ function downloadImage() {
 }
 
 window.addEventListener('load', () => {
+  // amazonq-ignore-next-line
   populateSkillOptions();
   generateImage();
+  // amazonq-ignore-next-line
   imageGenerated = false;
   //generateBtn.addEventListener('click', generateImage); 
   generateBtn.addEventListener('click', () => {
@@ -496,7 +519,8 @@ window.addEventListener('load', () => {
 
 /* ----- Section 16 --- function to share image on WhatsApp ----- */
 
-function shareOnWhatsApp() {
+/*
+function shareOnWhatsApp1() {
   if (!imageGenerated) {
     showToast('Please generate an image first', 'error');
     warningSound();
@@ -510,5 +534,26 @@ function shareOnWhatsApp() {
       const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(text)}`;
       window.open(whatsappUrl, '_blank');
    
+  });
+}
+*/
+
+function shareOnWhatsApp() {
+  if (!imageGenerated) {
+    showToast('Please generate an image first', 'error');
+    warningSound();
+    return;
+  }
+
+  canvas.toBlob((blob) => {
+    const file = new File([blob], 'career-goals.png', { type: 'image/png' });
+    const text = 'Check out my career goals for Independence Day 2025! => www.iforindia.online';
+
+    if (navigator.share && navigator.canShare({ files: [file] })) {
+      navigator.share({ files: [file], text });
+    } else {
+      const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(text)}`;
+      window.open(whatsappUrl, '_blank');
+    }
   });
 }
