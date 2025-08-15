@@ -23,6 +23,9 @@ HTML, HTML Cnavas, CSS, Javascript and GitHub Pages with custom domain.
 
 ![Screenshot](assets/screenshots/sc2-big.png)
 
+<p align="center">
+  <img src="assets/screenshots/sc2-big.png" alt="Screenshot" />
+</p>
 
 ---
 
