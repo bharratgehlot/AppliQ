@@ -1,5 +1,5 @@
-branch: master
-app name: I for India
+GitHub Branch: master
+App Name: I for India - 15 August 2025
 
 How to change git repo name?
 
@@ -8,5 +8,5 @@ How to change git repo name?
 
 I Love breaking things and fixing the broken things
 
-Add one celebrate button
-add sound effect when liking disliking
+Add funny like dislike button
+Feature where if user tries to select already added skill - sound feedback+toast notification - "This skill is already added"

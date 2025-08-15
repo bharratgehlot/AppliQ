@@ -176,11 +176,22 @@ function warningSound() {
   sound.play().catch(e => console.log('Sound play failed:', e));
 }
 
-/* ----- Section 8 --- Append like button ----- */
+function duplicateInput() {
+  const sound = document.getElementById('duplicateInput');
+  sound.currentime = 0;
+  sound.play().catch(e=> console.log('Error playinh sound'))
+}
 
+
+/* ----- Section 9 --- Append like button ----- */
+
+/* 
+
+// LIKE BUTTON
 
 likeBtn.addEventListener('click', () => {
   const val = skillSelect.value;
+
   if (val && !likesList.includes(val) && !dislikesList.includes(val)) {
 
     if (likesList.length < 7) {
@@ -191,11 +202,14 @@ likeBtn.addEventListener('click', () => {
       showToast('Maximum 7 likes can be added');
       warningSound()
     }
-  }
+  }  else if (val && (likesList.includes(val) || dislikesList.includes(val))) {
+      showToast('Duplicate input not allowed')
+      duplicateInput();
+    }
 });
 
 
-/* ----- Section 9 --- Append dislike button ----- */
+// DISLIKE BUTTON
 
 
 dislikeBtn.addEventListener('click', () => {
@@ -211,10 +225,88 @@ dislikeBtn.addEventListener('click', () => {
     } else {
       showToast('Maximum 7 dislikes can be added');
       warningSound();
+    } 
+  } else if (val) {
+      showToast('Duplicate input not allowed')
+      duplicateInput();
     }
-  }
+  
 }
 );
+
+*/
+
+/* -----TEST Section 9 --- Like dislike ----- */
+
+// LIKE BUTTON
+
+likeBtn.addEventListener('click', () => {
+  const val = skillSelect.value;
+
+  // do nothing if nothing selected
+  if (!val) return;
+
+  // If list is full, show max message and stop — this prevents duplicate toast when full
+  if (likesList.length >= 7) {
+    showToast('Maximum 7 likes can be added');
+    warningSound();
+    return;
+  }
+
+  // existing logic (kept as close to original as possible)
+  if (val && !likesList.includes(val) && !dislikesList.includes(val)) {
+
+    if (likesList.length < 7) {
+      likesList.push(val);
+      renderLists();
+      playSound();
+    } else {
+      showToast('Maximum 7 likes can be added');
+      warningSound();
+    }
+  } else if (val && (likesList.includes(val) || dislikesList.includes(val))) {
+    showToast('Duplicate input not allowed');
+    duplicateInput();
+  }
+});
+
+
+// DISLIKE BUTTON 
+
+
+// DISLIKE BUTTON
+dislikeBtn.addEventListener('click', () => {
+  const val = skillSelect.value;
+
+  // do nothing if nothing selected
+  if (!val) return;
+
+  // If dislikes list is full, show max message and stop
+  if (dislikesList.length >= 7) {
+    showToast('Maximum 7 dislikes can be added');
+    warningSound();
+    return;
+  }
+
+  // existing logic mirrored for dislikes
+  if (val && !dislikesList.includes(val) && !likesList.includes(val)) {
+
+    if (dislikesList.length < 7) {
+      dislikesList.push(val);
+      renderLists();
+      playSound();
+    } else {
+      showToast('Maximum 7 dislikes can be added');
+      warningSound();
+    }
+  } else if (val && (dislikesList.includes(val) || likesList.includes(val))) {
+    showToast('Duplicate input not allowed');
+    duplicateInput();
+  }
+});
+
+
+
 
 /* ----- Section 10 --- function to draw tricolor flag ----- */
 
