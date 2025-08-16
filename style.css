@@ -252,6 +252,18 @@ button:disabled {
 
 }
 
+
+.footer {
+  text-align: center;
+  margin: 5px;
+  padding: 5px;
+}
+
+.footer a {
+    font-style: italic;
+}
+
+
 @keyframes tricolorGlow {
   0%   { box-shadow: 0 0 10px #ff9933; }
   33%  { box-shadow: 0 0 10px #ffffff; }
@@ -449,6 +461,14 @@ canvas {
     font-size: 13px;
 
   }
+
+  .footer {
+  text-align: center;
+  margin: 5px;
+  padding: 5px;
+  font-size: small;
+}
+
 
 
 }
